@@ -2,38 +2,33 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, libs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      inputs.xremap-flake.nixosModules.default
     ];
 
-    services.xremap = {
-      userName = "aidan";
-      config = {
-        keymap = [
-          {
-            remap = {
-              "CapsLock" = "esc";
-            };
-          }
-        ];
-      };
-    };
-
+  services.xremap = {
+    withSway = true;
+    userName = "aidan";
+    yamlConfig = ''
+      keymap:
+        - remap:
+            CapsLock: Esc
+    '';
+  };
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -60,12 +55,18 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        user = "aidan";
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -101,10 +102,6 @@
     isNormalUser = true;
     description = "aidan";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
   };
 
   home-manager = {
@@ -114,9 +111,7 @@
     };
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "aidan";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -140,14 +135,10 @@
   #   enableSSHSupport = true;
   # };
 
-  hardware.uinput.enable = true;
-  users.groups.uinput.members = [ "aidan" ];
-  users.groups.input.members = [ "aidan" ];
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -162,18 +153,33 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      sudo = "sudo ";
-      vi = "nvim";
-    };
-    histSize = 10000;
-    #histFile = "${config.xdg.dataHome}/zsh/history";
-    ohMyZsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
-  };  
+
   users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+  programs.zsh.enable = true;
+
+  security.polkit.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 47984 47989 47990 4810 ];
+    allowedUDPPortRanges = [
+      { from = 47998; to = 48000; }
+      { from = 8000; to = 8010; }
+    ];
+  };
+
+  services.sunshine.enable = true;
+
+  security.wrappers.sunshine = {
+    owner = "root";
+    group = "root";
+    capabilities = "cap_sys_admin+p";
+    source = "${pkgs.sunshine}/bin/sunshine";
+  };
+
+
+  hardware.opengl.enable = true;
+  programs.sway.enable = true;
+
 }
