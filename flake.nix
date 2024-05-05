@@ -12,8 +12,6 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
@@ -32,6 +30,16 @@
             inputs.home-manager.nixosModules.default
           ];
         };
+
+	
+        surface = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/surface/configuration.nix 
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+	
       };
 
       homeManagerModules.default = ./homeManagerModules;
