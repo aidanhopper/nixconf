@@ -18,29 +18,35 @@ let
 
     selected=$(${pkgs.coreutils}/bin/echo $selected | ${pkgs.gnused}/bin/sed "s|~|$HOME|g")
 
+    selected=$(${pkgs.coreutils}/bin/echo $selected | ${pkgs.coreutils}/bin/printf "%q" $selected)
+
     if [[ -z $selected ]]; then
       exit 0
     fi
 
-    session=$(${pkgs.coreutils}/bin/basename $selected)
+    session=$(${pkgs.coreutils}/bin/basename $selected | ${pkgs.gnused}/bin/sed "s|\.|_|g")
+    session=$(${pkgs.coreutils}/bin/echo $session | ${pkgs.coreutils}/bin/printf "%q" $session | ${pkgs.gnused}/bin/sed "s|\.|_|g")
+
+    ${pkgs.coreutils}/bin/echo "session: $session"
+    ${pkgs.coreutils}/bin/echo "selected: $selected"
 
     tmux_running=$(${pkgs.toybox}/bin/pgrep tmux)
 
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-      ${pkgs.tmux}/bin/tmux new-session -s $session -c $selected
+      ${pkgs.tmux}/bin/tmux new-session -s "$session" -c "$selected"
       exit 0
     fi
 
-    has_session=$(${pkgs.tmux}/bin/tmux has-session -t $session 2> /dev/null) 
+    has_session=$(${pkgs.tmux}/bin/tmux has-session -t "$session" 2> /dev/null) 
 
     if [[ -z $has_session ]]; then
-      ${pkgs.tmux}/bin/tmux new-session -ds $session -c $selected
+      ${pkgs.tmux}/bin/tmux new-session -ds "$session" -c "$selected"
     fi
 
     if [[ -z $TMUX ]]; then
-      ${pkgs.tmux}/bin/tmux attach -t $session
+      ${pkgs.tmux}/bin/tmux attach -t "$session"
     else
-      ${pkgs.tmux}/bin/tmux switch-client -t $session
+      ${pkgs.tmux}/bin/tmux switch-client -t "$session"
     fi
      
   '';

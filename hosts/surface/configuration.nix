@@ -10,17 +10,11 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
+      ./nixosModules
     ];
 
-  services.xremap = {
-    withGnome = true;
-    userName = "aidan";
-    yamlConfig = ''
-      keymap:
-        - remap:
-            CapsLock: Esc
-    '';
-  };
+  xremap.gnome.enable = true;
+
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

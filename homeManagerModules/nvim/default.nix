@@ -24,6 +24,7 @@
 
     # dependencies
     home.packages = with pkgs; [
+      ripgrep
       gcc
     ];
 
