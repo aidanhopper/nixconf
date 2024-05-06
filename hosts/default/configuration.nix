@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, libs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -10,22 +10,17 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
+      ../../nixosModules
     ];
 
-  services.xremap = {
-    withSway = true;
-    userName = "aidan";
-    yamlConfig = ''
-      keymap:
-        - remap:
-            CapsLock: Esc
-    '';
-  };
-
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,18 +50,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
-  #services.xserver.displayManager.gdm.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
-        user = "aidan";
-      };
-    };
-  };
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -102,20 +91,11 @@
     isNormalUser = true;
     description = "aidan";
     extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      firefox
+    #  thunderbird
+    ];
   };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "aidan" = import ./home.nix;
-    };
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -138,7 +118,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -152,34 +132,31 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  system.stateVersion = "23.11"; # Did you read the comment?
+
+  # List services that you want to enable:
+
+  services.openssh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
-
   security.polkit.enable = true;
+  xremap.gnome.enable = true;
+  services.tailscale.enable = true;
 
-  networking.firewall = {
+  hardware.opengl = {
     enable = true;
-    allowedTCPPorts = [ 47984 47989 47990 4810 ];
-    allowedUDPPortRanges = [
-      { from = 47998; to = 48000; }
-      { from = 8000; to = 8010; }
-    ];
+    driSupport32Bit = true;
   };
 
-  services.sunshine.enable = true;
-
-  security.wrappers.sunshine = {
-    owner = "root";
-    group = "root";
-    capabilities = "cap_sys_admin+p";
-    source = "${pkgs.sunshine}/bin/sunshine";
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "aidan" = import ./home.nix;
+    };
+    useGlobalPkgs = true;
   };
-
-
-  hardware.opengl.enable = true;
-  programs.sway.enable = true;
 
 }
