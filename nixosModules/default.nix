@@ -3,6 +3,7 @@
 {
   imports = [
     ./xremap
+    ./sunshine
   ];
 }
 

@@ -5,24 +5,14 @@
 { inputs, config, pkgs, ... }:
 
 {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
-      ./nixosModules
+      ../../nixosModules
     ];
-
-  xremap.gnome.enable = true;
-
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "aidan" = import ./home.nix;
-    };
-    useGlobalPkgs = true;
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -118,65 +108,29 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
-
   security.polkit.enable = true;
-
-  services.sunshine.enable = true;
-
-  security.wrappers.sunshine = {
-    owner = "root";
-    group = "root";
-    capabilities = "cap_sys_admin+p";
-    source = "${pkgs.sunshine}/bin/sunshine";
-  };
+  xremap.gnome.enable = true;
+  services.tailscale.enable = true;
 
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
   };
 
-  systemd.services.sunshine = {
-    startLimitBurst = 5;
-    startLimitIntervalSec = 500;
-    serviceConfig = {
-      ExecStart = "${config.security.wrapperDir}/sunshine";
-      Restart = "on-failure";
-      RestartSec = "5s";
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "aidan" = import ./home.nix;
     };
+    useGlobalPkgs = true;
   };
 
 }
