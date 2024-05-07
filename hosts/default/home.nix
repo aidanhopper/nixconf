@@ -6,18 +6,16 @@
     ../../homeManagerModules
   ];
 
-  nvim.enable = true;
-  zsh.enable = true;
-  kitty.enable = true;
-  tmux.enable = true;
-  sway.enable = true;
+  dev.enable = true;
 
   home.username = "aidan";
   home.homeDirectory = "/home/aidan";
 
   home.packages = with pkgs; [
-    git
+    discord
     firefox
+    steam
+    spotify
   ];
 
   home.stateVersion = "24.05";

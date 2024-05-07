@@ -22,7 +22,7 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -138,13 +138,14 @@
 
   # List services that you want to enable:
 
-  services.openssh.enable = true;
+
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   security.polkit.enable = true;
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
+  ssh.enable = true;
 
   hardware.opengl = {
     enable = true;
