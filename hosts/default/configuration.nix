@@ -57,6 +57,8 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  services.xserver.videoDrivers = ["nvidia"];
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -149,7 +151,15 @@
 
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     driSupport32Bit = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   home-manager = {
