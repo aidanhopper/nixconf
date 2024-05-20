@@ -63,16 +63,15 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
     },
     config = function()
+
       -- This is where all the LSP shenanigans will live
-      local lsp_zero = require "lsp-zero"
-      lsp_zero.extend_lspconfig()
+      local lsp_zero = require("lsp-zero")
 
       --- if you want to know more about lsp-zero and mason.nvim
       --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
       lsp_zero.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
-        vim.keymap.set("n", "gd", function()
-          vim.lsp.buf.definition()
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition()
         end, opts)
         vim.keymap.set("n", "K", function()
           vim.lsp.buf.hover()
@@ -84,8 +83,7 @@ return {
           vim.diagnostic.open_float()
         end, opts)
         vim.keymap.set("n", "<leader>vca", function()
-          vim.lsp.buf.code_action()
-        end, opts)
+          vim.lsp.buf.code_action() end, opts)
         vim.keymap.set("n", "<leader>vrr", function()
           vim.lsp.buf.references()
         end, opts)
@@ -104,14 +102,11 @@ return {
         vim.keymap.set("n", "<leader>vv", ":TroubleToggle<CR>", opts)
       end)
 
+      require('mason').setup()
       require("mason-lspconfig").setup {
-        ensure_installed = {},
         handlers = {
-          lsp_zero.default_setup,
-          lua_ls = function()
-            -- (Optional) Configure lua language server for neovim
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require("lspconfig").lua_ls.setup(lua_opts)
+          function(server_name)
+            require('lspconfig')[server_name].setup({})
           end,
         },
       }

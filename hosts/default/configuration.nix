@@ -154,14 +154,16 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-
+  
   hardware.nvidia = {
     modesetting.enable = true;
+    powerManagement.enable = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {

@@ -16,7 +16,10 @@
     firefox
     steam
     spotify
+    wl-clipboard
+    obsidian
   ];
+
 
   home.stateVersion = "24.05";
 
