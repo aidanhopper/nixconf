@@ -32,6 +32,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
+  networking.interfaces.enp3s0.wakeOnLan.policy = [
+    "magic"
+    "unicast"
+  ];
+
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
