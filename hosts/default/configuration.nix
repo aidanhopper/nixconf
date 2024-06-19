@@ -60,7 +60,7 @@
     settings = rec {
       initial_session = {
         command = "${pkgs.sway}/bin/sway";
-        user = "myuser";
+        user = "aidan";
       };
       default_session = initial_session;
     };
