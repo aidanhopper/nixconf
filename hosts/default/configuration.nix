@@ -54,7 +54,17 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+#  services.xserver.displayManager.gdm.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "myuser";
+      };
+      default_session = initial_session;
+    };
+  };
   services.xserver.desktopManager.gnome.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
@@ -157,11 +167,11 @@
   sunshine.enable = true;
   ssh.enable = true;
 
-# hardware.opengl = {
-#   enable = true;
-#   driSupport = true;
-#   driSupport32Bit = true;
-# };
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
   
   hardware.nvidia = {
     modesetting.enable = true;
