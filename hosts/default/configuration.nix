@@ -67,12 +67,6 @@
   };
   services.xserver.desktopManager.gnome.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
   services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
