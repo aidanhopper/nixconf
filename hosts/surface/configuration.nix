@@ -119,6 +119,7 @@
   security.polkit.enable = true;
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
+  sunshine.enable = true;
 
   hardware.opengl = {
     enable = true;
