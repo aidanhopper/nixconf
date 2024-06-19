@@ -59,7 +59,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.sway}/bin/sway --unsupported-gpu";
+        command = "${pkgs.sway}/bin/sway";
         user = "aidan";
       };
       default_session = initial_session;
