@@ -152,7 +152,7 @@
   ssh.enable = true;
 
   hardware.opengl = {
-    enable = true;
+    enable = false;
     driSupport = true;
     driSupport32Bit = true;
   };
