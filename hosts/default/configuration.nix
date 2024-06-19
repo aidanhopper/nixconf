@@ -160,6 +160,7 @@
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
   sunshine.enable = true;
+  services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
   hardware.opengl = {
@@ -168,13 +169,13 @@
     driSupport32Bit = true;
   };
   
-# hardware.nvidia = {
-#   modesetting.enable = true;
-#   powerManagement.enable = true;
-#   open = false;
-#   nvidiaSettings = true;
-#   package = config.boot.kernelPackages.nvidiaPackages.stable;
-# };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   
   home-manager = {
