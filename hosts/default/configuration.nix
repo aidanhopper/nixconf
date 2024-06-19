@@ -92,9 +92,10 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "sound" ];
     packages = with pkgs; [
       firefox
+      xclip
     #  thunderbird
     ];
   };
@@ -147,6 +148,7 @@
   security.polkit.enable = true;
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
+  sunshine.enable = true;
   ssh.enable = true;
 
   hardware.opengl = {
@@ -171,5 +173,7 @@
     };
     useGlobalPkgs = true;
   };
+
+  nix.settings.trusted-users = ["root" "aidan"];
 
 }

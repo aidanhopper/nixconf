@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -18,8 +18,14 @@
     spotify
     wl-clipboard
     obsidian
+    xclip
+    zip
+    unzip
+    jq
+    cachix
+    obs-studio
+    prismlauncher
   ];
-
 
   home.stateVersion = "24.05";
 

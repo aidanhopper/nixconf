@@ -16,6 +16,7 @@ ocaml
 python
 rush
 shell
+haskell
 zig
     ' | ${pkgs.gawk}/bin/awk 'NF' | ${pkgs.fzf}/bin/fzf)
     echo $selected
