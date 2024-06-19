@@ -9,6 +9,7 @@
     ./sway
     ./direnv
     ./git
+    ./nixconf
   ];
 
   options = {
@@ -22,6 +23,7 @@
     zsh.enable = true;
     direnv.enable = true;
     git.enable = true;
+    nixconf.enable = true;
   };
 
 }

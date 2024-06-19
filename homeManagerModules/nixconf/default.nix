@@ -2,9 +2,9 @@
 
 let
 
-  nixconf = pkgs.writeShellScriptBin "tmux-sessionizer" ''
+  nixconf = pkgs.writeShellScriptBin "nixconf" ''
     ${pkgs.git}/bin/git add /nixconf
-    ${pkgs.git}/bin/git commit -m $(${coreutils/bin/date} "+%s")
+    ${pkgs.git}/bin/git commit -m $(date "+%s")
     ${pkgs.git}/bin/git push
   '';
 
@@ -20,6 +20,6 @@ in
       nixconf
     ];
 
-  }
+  };
 }
 
