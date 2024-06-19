@@ -6,7 +6,7 @@ let
     ${pkgs.git}/bin/git add /nixconf
     ${pkgs.git}/bin/git commit -m $(date "+%s")
     ${pkgs.git}/bin/git push
-    nixos-rebuild $1 --flake /nixconf#$2
+    sudo nixos-rebuild $1 --flake /nixconf#$2
   '';
 
 in
