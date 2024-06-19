@@ -17,7 +17,6 @@
   };
 
   config = lib.mkIf config.dev.enable {
-    ./sway
     nvim.enable = true;
     kitty.enable = true;
     tmux.enable = true;
