@@ -31,7 +31,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.interfaces.tailscale0.wakeOnLan.enable = true;
+  networking.interfaces.enp0s20f0u5.wakeOnLan.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
