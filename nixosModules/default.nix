@@ -5,7 +5,6 @@
     ./xremap
     ./sunshine
     ./ssh
-    ./sway
   ];
 }
 
