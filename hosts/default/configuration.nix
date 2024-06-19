@@ -68,7 +68,7 @@
 
   services.xserver.desktopManager.gnome.enable = true;
 
-  # services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
   services.xserver = {
