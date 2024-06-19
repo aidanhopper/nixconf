@@ -54,17 +54,18 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-#  services.xserver.displayManager.gdm.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "aidan";
-      };
-      default_session = initial_session;
-    };
-  };
+  services.xserver.displayManager.gdm.enable = true;
+# services.greetd = {
+#   enable = true;
+#   settings = rec {
+#     initial_session = {
+#       command = "${pkgs.sway}/bin/sway";
+#       user = "aidan";
+#     };
+#     default_session = initial_session;
+#   };
+# };
+
   services.xserver.desktopManager.gnome.enable = true;
 
   # services.xserver.videoDrivers = ["nvidia"];
