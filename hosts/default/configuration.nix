@@ -59,7 +59,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.sway}/bin/sway";
+        command = "${pkgs.sway}/bin/sway --unsupported-gpu";
         user = "aidan";
       };
       default_session = initial_session;
@@ -176,7 +176,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    open = true;
+    open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
