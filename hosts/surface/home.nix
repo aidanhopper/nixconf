@@ -15,6 +15,7 @@
     firefox
     steam
     spotify
+    moonlight-qt
   ];
 
   home.stateVersion = "24.05";
