@@ -147,6 +147,12 @@
 
   # List services that you want to enable:
 
+  users.groups.media = {
+    gid = 1800;
+    members = [
+      "aidan" 
+    ];
+  }
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
@@ -159,7 +165,10 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
   jellyfin.enable = true;
-  services.lidarr.enable = true;
+  services.lidarr = {
+    enable = true;
+    group = "media";
+  }
 
   hardware.opengl = {
     enable = true;
