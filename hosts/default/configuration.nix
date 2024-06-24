@@ -168,7 +168,7 @@
   services.lidarr = {
     enable = true;
     group = "media";
-  }
+  };
 
   hardware.opengl = {
     enable = true;
