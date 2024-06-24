@@ -169,8 +169,7 @@
     enable = true;
     group = "media";
   };
-  services.deluge.enable = true;
-  services.deluge.web.enable = true;
+  services.transmission.enable = true;
   
   hardware.opengl = {
     enable = true;
