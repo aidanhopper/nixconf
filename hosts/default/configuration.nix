@@ -159,7 +159,7 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
   jellyfin.enable = true;
-  services.prowlarr.enable = true;
+  services.lidarr.enable = true;
 
   hardware.opengl = {
     enable = true;
