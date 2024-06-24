@@ -61,17 +61,6 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-# services.greetd = {
-#   enable = true;
-#   settings = rec {
-#     initial_session = {
-#       command = "${pkgs.sway}/bin/sway";
-#       user = "aidan";
-#     };
-#     default_session = initial_session;
-#   };
-# };
-
   services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -168,6 +157,7 @@
   sunshine.enable = true;
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
+  jellyfin.enable = true;
 
   hardware.opengl = {
     enable = true;

@@ -5,6 +5,7 @@
     ./xremap
     ./sunshine
     ./ssh
+    ./jellyfin
   ];
 }
 
