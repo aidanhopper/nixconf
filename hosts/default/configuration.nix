@@ -154,6 +154,7 @@
   security.polkit.enable = true;
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
   sunshine.enable = true;
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
