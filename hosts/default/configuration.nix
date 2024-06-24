@@ -160,7 +160,6 @@
   ssh.enable = true;
   jellyfin.enable = true;
   services.lidarr.enable = true;
-  services.lidarr.user = "aidan";
 
   hardware.opengl = {
     enable = true;
