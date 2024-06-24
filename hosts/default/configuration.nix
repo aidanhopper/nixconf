@@ -102,6 +102,7 @@
     packages = with pkgs; [
       firefox
       xclip
+      transmission
     #  thunderbird
     ];
   };
@@ -112,7 +113,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    transmission
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
