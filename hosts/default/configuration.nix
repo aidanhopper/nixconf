@@ -170,6 +170,7 @@
     group = "media";
   };
   services.transmission.enable = true;
+  services.prowlarr.enable = true;
   
   hardware.opengl = {
     enable = true;
