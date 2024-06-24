@@ -11,5 +11,5 @@
       jellyfin-web
       jellyfin-ffmpeg
     ];
-  }
+  };
 }
