@@ -9,7 +9,7 @@
     services.jellyfin = {
       enable = true;
       user = "aidan";
-    }
+    };
     environment.systemPackages = with pkgs; [
       jellyfin
       jellyfin-web
