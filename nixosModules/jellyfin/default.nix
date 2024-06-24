@@ -6,7 +6,10 @@
   };
 
   config = lib.mkIf config.jellyfin.enable {
-    services.jellyfin.enable = true;
+    services.jellyfin = {
+      enable = true;
+      user = "aidan";
+    }
     environment.systemPackages = with pkgs; [
       jellyfin
       jellyfin-web
