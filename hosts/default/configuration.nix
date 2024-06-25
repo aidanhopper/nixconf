@@ -164,10 +164,17 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
   jellyfin.enable = true;
+
   services.lidarr = {
     enable = true;
     group = "media";
   };
+
+  services.sonarr = {
+    enable = true;
+    group = "media";
+  };
+
   services.transmission.enable = true;
   services.transmission.group = "media";
   services.prowlarr.enable = true;
