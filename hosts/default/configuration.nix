@@ -174,12 +174,7 @@
 
   systemd.services.jellyfinFunnel = {
     Unit.Description = "create a funnel for jellyfin service";
-    Service = {
-      ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-      ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
-      User = "aidan";
-      Restart = "on-failure";
-    };
+    Service.ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
   };
 
   systemd.services.jellfinFunnel.enable = true;
