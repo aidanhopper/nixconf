@@ -172,7 +172,7 @@
   services.transmission.group = "media";
   services.prowlarr.enable = true;
 
-  systemd.services.jellyfinFunnel = {
+  systemd.user.services.jellyfinFunnel = {
     Unit.Description = "create a funnel for jellyfin service";
     Service.ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
   };
