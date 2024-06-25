@@ -178,7 +178,7 @@
       ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
       Restart = "on-failure";
     };
-  }
+  };
   services.jellfinFunnel.enable = true;
   
   hardware.opengl = {
