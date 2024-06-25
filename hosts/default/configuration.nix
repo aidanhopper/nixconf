@@ -173,9 +173,9 @@
   services.prowlarr.enable = true;
 
   systemd.services.jellyfinFunnel = {
-    description = "create a funnel for jellyfin service";
-    serviceConfig = {
-      type = "simple";
+    Unit.Description = "create a funnel for jellyfin service";
+    Service = {
+      Type = "simple";
       ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
       ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
       User = "aidan";
