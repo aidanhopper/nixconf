@@ -25,6 +25,7 @@
     cachix
     obs-studio
     prismlauncher
+    feishin
   ];
 
   sway.enable = true;
