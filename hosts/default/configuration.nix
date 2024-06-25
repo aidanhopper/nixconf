@@ -175,7 +175,7 @@
     description = "create a funnel for jellyfin service";
     serviceConfig = {
       ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale funnel reset";
+      ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
       Restart = "on-failure";
     };
   }
