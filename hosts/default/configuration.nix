@@ -179,7 +179,7 @@
       Restart = "on-failure";
     };
   };
-  services.jellfinFunnel.enable = true;
+  service.jellfinFunnel.enable = true;
   
   hardware.opengl = {
     enable = true;
