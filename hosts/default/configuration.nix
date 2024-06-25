@@ -171,6 +171,14 @@
   services.transmission.enable = true;
   services.transmission.group = "media";
   services.prowlarr.enable = true;
+  systemd.user.services.jellyfinFunnel = {
+    description = "create a funnel for jellyfin service";
+    serviceConfig = {
+      ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096"
+      ExecStart = "${pkgs.tailscale}/bin/tailscale funnel reset"
+      Restart = "on-failure"
+    };
+  }
   
   hardware.opengl = {
     enable = true;
