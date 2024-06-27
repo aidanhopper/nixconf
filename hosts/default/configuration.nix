@@ -98,7 +98,7 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "sound" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
       firefox
       xclip
