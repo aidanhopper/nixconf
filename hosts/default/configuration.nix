@@ -197,11 +197,11 @@
   systemd.services.vpn = {
     enable = true;
     serviceConfig = {
-      Type = "oneshot";
       ExecStart = "tailscale set --exit-node=us-sea-wg-102.mullvad.ts.net --exit-node-allow-lan-access";
       ExecStop = "tailscale set --exit-node=";
       Restart = "on-failure";
     };
+    After = [ "tailscaled" ]
   };
   
   hardware.opengl = {
