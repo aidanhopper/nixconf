@@ -26,6 +26,7 @@
     obs-studio
     prismlauncher
     feishin
+    jellyfin-media-player
   ];
 
   sway.enable = true;
