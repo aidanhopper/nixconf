@@ -102,7 +102,6 @@
     packages = with pkgs; [
       firefox
       xclip
-      transmission
       qbittorrent-nox
     #  thunderbird
     ];
@@ -159,6 +158,7 @@
   programs.zsh.enable = true;
   security.polkit.enable = true;
   xremap.gnome.enable = true;
+
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
@@ -198,6 +198,15 @@
     };
   };
 
+  systemd.services.qbittorrent = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+      ExecStop = "pkill qbittorrent-nox";
+      Restart = "on-failure";
+    };
+  };
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -211,6 +220,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
 
   
   home-manager = {
