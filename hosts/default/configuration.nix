@@ -162,7 +162,6 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
-    extra
   };
 
   sunshine.enable = true;
