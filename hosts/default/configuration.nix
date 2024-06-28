@@ -201,7 +201,7 @@
       ExecStop = "tailscale set --exit-node=";
       Restart = "on-failure";
     };
-    After = [ "tailscaled" ]
+    After = [ "tailscaled" ];
   };
   
   hardware.opengl = {
