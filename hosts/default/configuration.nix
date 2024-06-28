@@ -194,16 +194,6 @@
     };
   };
 
-  systemd.services.vpn = {
-    enable = true;
-    serviceConfig = {
-      ExecStart = "tailscale set --exit-node=us-sea-wg-102.mullvad.ts.net --exit-node-allow-lan-access";
-      ExecStop = "tailscale set --exit-node=";
-      Restart = "on-failure";
-    };
-    after = [ "network-online.target" ];
-  };
-  
   hardware.opengl = {
     enable = true;
     driSupport = true;
