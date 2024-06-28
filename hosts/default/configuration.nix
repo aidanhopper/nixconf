@@ -184,8 +184,6 @@
     group = "media";
   };
 
-  services.transmission.enable = true;
-  services.transmission.group = "media";
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
