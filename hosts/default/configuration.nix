@@ -201,7 +201,7 @@
   systemd.services.qbittorrent = {
     enable = true;
     serviceConfig = {
-      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=9091";
       ExecStop = "pkill qbittorrent-nox";
       Restart = "on-failure";
     };
