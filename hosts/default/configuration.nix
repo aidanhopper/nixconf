@@ -189,10 +189,19 @@
     enable = true;
     serviceConfig = {
       ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
+      ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
+      Restart = "on-failure";
     };
   };
 
-  systemd.services.jellfinFunnel.enable = true;
+  systemd.services.vpn = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "tailscale set --exit-node=us-sea-wg-102.mullvad.ts.net --exit-node-allow-lan-access";
+      ExecStop = "tailscale set --exit-node=";
+      Restart = "on-failure";
+    };
+  };
   
   hardware.opengl = {
     enable = true;
