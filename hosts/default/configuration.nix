@@ -103,7 +103,7 @@
       firefox
       xclip
       transmission
-      qbittorrent
+      qbittorrent-nox
     #  thunderbird
     ];
   };
