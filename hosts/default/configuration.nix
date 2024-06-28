@@ -103,6 +103,7 @@
       firefox
       xclip
       transmission
+      qbittorrent
     #  thunderbird
     ];
   };
@@ -158,8 +159,12 @@
   programs.zsh.enable = true;
   security.polkit.enable = true;
   xremap.gnome.enable = true;
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "client";
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+    extra
+  };
+
   sunshine.enable = true;
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
