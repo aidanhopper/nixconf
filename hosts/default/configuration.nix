@@ -201,7 +201,7 @@
       ExecStop = "tailscale set --exit-node=";
       Restart = "on-failure";
     };
-    after = [ "tailscaled.target" ];
+    after = [ "network-online.target" ];
   };
   
   hardware.opengl = {
