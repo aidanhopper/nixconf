@@ -195,10 +195,10 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."localhost" = {
-      locations."/jellyseerr" = {
+      locations."/jellyseerr/" = {
         proxyPass = "http://localhost:5055";
       };
-      locations."/jellyfin" = {
+      locations."/jellyfin/" = {
         proxyPass = "http://localhost:8096";
       };
     };
