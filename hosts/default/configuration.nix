@@ -198,6 +198,9 @@
       locations."/jellyseerr" = {
         proxyPass = "http://localhost:5055";
       };
+      locations."/jellyfin" = {
+        proxyPass = "http://localhost:8096";
+      };
     };
   };
 
