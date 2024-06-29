@@ -195,7 +195,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."localhost" = {
-      locations."/" = {
+      locations."/jellyseerr" = {
         proxyPass = "http://localhost:5055";
       };
     };
