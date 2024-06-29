@@ -172,6 +172,9 @@
     enable = true;
     virtualHosts."media.aidahop.xyz".extraConfig = ''
       reverse_proxy http://localhost:8096
+      tls {
+        dns cloudflare qKLz56pO8Tk2cF0MjrvasdVAhN1mRcQjIB8TubZS
+      }
     '';
   };
   
