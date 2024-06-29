@@ -174,17 +174,11 @@
     email = "aidanhop1@gmail.com";
   };
 
-  services.nginx = {
+  services.caddy = {
     enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    virtualHosts."media.aidahop.xyz" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://localhost:8096";
-      };
-    };
+    virtualHosts."media.aidahop.xyz".extraConfig = ''
+      reverse_proxy http://localhost:8096
+    '';
   };
   
   #  dns cloudflare qKLz56pO8Tk2cF0MjrvasdVAhN1mRcQjIB8TubZS
