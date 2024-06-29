@@ -169,12 +169,17 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
+  security.acme = {
+    acceptTerms = true;
+    email = "aidanhop1@gmail.com";
+  };
+
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."media.aidahop.xyz" = {
-      #enableACME = true;
+      enableACME = true;
       #forceSSL = true;
       locations."/" = {
         proxyPass = "http://localhost:8096";
