@@ -168,7 +168,12 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
-  
+  services.caddy = {
+    enable = true;
+    virtualHosts."localhost".extraConfig = ''
+      respond "HELLO WORLD!"
+    '';
+  };
   
   jellyfin.enable = true;
 
