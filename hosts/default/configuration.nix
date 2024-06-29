@@ -194,7 +194,11 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHost."example.com".locations."/".proxyPass = "http://localhost:5055";
+    virtualHost."example.com" = {
+      locations."/" = {
+        proxyPass = "http://localhost:5055";
+      };
+    };
   };
 
 
