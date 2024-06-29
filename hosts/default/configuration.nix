@@ -103,6 +103,7 @@
       firefox
       xclip
       qbittorrent-nox
+      cloudflared
     #  thunderbird
     ];
   };
