@@ -199,7 +199,7 @@
         proxyPass = "http://localhost:5055";
         proxyWebsockets = true;
       };
-      locations."jellyfin" = {
+      locations."localhost/jellyfin" = {
         proxyPass = "http://localhost:8096";
         proxyWebsockets = true;
       };
