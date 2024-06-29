@@ -194,7 +194,7 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHost."example.com" = {
+    virtualHosts."example.com" = {
       locations."/" = {
         proxyPass = "http://localhost:5055";
       };
