@@ -174,7 +174,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."media.aidahop.xyz" = {
-      enableACME = true;
+      #enableACME = true;
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://localhost:8096";
