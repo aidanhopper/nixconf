@@ -194,12 +194,12 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."localhost" = {
-      locations."localhost/jellyseerr/" = {
+    virtualHosts."jellyseerr" = {
+      locations."localhost/jellyseerr" = {
         proxyPass = "http://localhost:5055";
         proxyWebsockets = true;
       };
-      locations."localhost/jellyfin/" = {
+      locations."jellyfin" = {
         proxyPass = "http://localhost:8096";
         proxyWebsockets = true;
       };
