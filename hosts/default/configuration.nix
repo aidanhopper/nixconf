@@ -169,16 +169,20 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
-  services.caddy = {
+  services.nginx = {
     enable = true;
-    virtualHosts."media.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://localhost:8096
-      tls {
-        dns cloudflare qKLz56pO8Tk2cF0MjrvasdVAhN1mRcQjIB8TubZS
-      }
-    '';
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts."media.aidahop.xyz" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8096";
+      };
+    };
   };
   
+  #  dns cloudflare qKLz56pO8Tk2cF0MjrvasdVAhN1mRcQjIB8TubZS
   jellyfin.enable = true;
 
   services.lidarr = {
