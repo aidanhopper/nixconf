@@ -103,7 +103,6 @@
       firefox
       xclip
       qbittorrent-nox
-      cloudflared
     #  thunderbird
     ];
   };
@@ -188,7 +187,6 @@
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
-  services.cloudflared.enable = true;
 
   systemd.services.jellyfinFunnel = {
     enable = true;
