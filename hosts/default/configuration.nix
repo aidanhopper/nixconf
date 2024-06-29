@@ -194,7 +194,7 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."jellyfin.service" = {
+    virtualHosts."localhost" = {
       locations."/" = {
         proxyPass = "http://localhost:5055";
       };
