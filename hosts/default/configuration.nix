@@ -36,6 +36,7 @@
     "magic"
     "unicast"
   ];
+  networking.firewall.allowedTCPPorts = [ 80 443];
 
 
   # Set your time zone.
