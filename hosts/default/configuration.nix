@@ -190,22 +190,6 @@
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    virtualHosts."localhost" = {
-      locations."/jellyseerr" = {
-        proxyPass = "http://localhost:5055";
-        proxyWebsockets = true;
-      };
-      locations."/jellyfin" = {
-        proxyPass = "http://localhost:8096";
-        proxyWebsockets = true;
-      };
-    };
-  };
-
 
   systemd.services.jellyfinFunnel = {
     enable = true;
