@@ -167,6 +167,9 @@
   sunshine.enable = true;
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
+
+  
+  
   jellyfin.enable = true;
 
   services.lidarr = {
@@ -186,6 +189,13 @@
 
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
+
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHost."example.com".locations."/".proxyPass = "http://localhost:5055";
+  };
 
 
   systemd.services.jellyfinFunnel = {
