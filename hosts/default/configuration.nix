@@ -170,8 +170,11 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."localhost".extraConfig = ''
-      respond "HELLO WORLD!"
+    virtualHosts."media.aidahop.xyz".extraConfig = ''
+      reverse_proxy http://localhost:8096
+      tls {
+        dns cloudflare 0f4e5e4bb9382744586fcbd0d04ab419
+      }
     '';
   };
   
