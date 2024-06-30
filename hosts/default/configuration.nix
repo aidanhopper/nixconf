@@ -189,6 +189,7 @@
       services.jellyfin.enable = true;
       services.tailscale = {
         enable = true;
+        useRoutingFeatures = "client"; # need this for mullvad to work
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
