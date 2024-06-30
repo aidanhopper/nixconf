@@ -196,11 +196,17 @@
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
-      services.tailscale.enable = true;
+      services.tailscale = {
+        enable = true;
+        extraSetFlags = [
+          "--webclient"
+        ];
+
+      };
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 8096 ];
+          allowedTCPPorts = [ 8096 5252 ];
         };
         useHostResolvConf = lib.mkForce false;
       };
