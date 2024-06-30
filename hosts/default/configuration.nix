@@ -248,7 +248,7 @@
         ];
       };
       systemd.services.tailscale-autostart = {
-        after = [ "network.target" ];
+        after = [ "qbittorrent.service" ];
         serviceConfig = {
           ExecStart = "${pkgs.tailscale}/bin/tailscaled";
           ExecStop = "pkill tailscaled";
