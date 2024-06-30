@@ -184,6 +184,7 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
+    hostAddress = "192.168.100.10";
     config = { config, pkgs, lib, ... }: {
       services.nextcloud.enable = true;
       system.stateVersion = "unstable";
