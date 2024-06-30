@@ -245,7 +245,6 @@
         enable = true;
         useRoutingFeatures = "client"; # need this for mullvad to work
         extraDaemonFlags = [
-          "--tun=userspace-networking"
         ];
       };
       systemd.services.qbittorrent = {
@@ -264,7 +263,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 8080 ];
+          allowedTCPPorts = [ 80 ];
         };
       };
     };
