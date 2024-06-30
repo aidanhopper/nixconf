@@ -271,6 +271,8 @@
     useGlobalPkgs = true;
   };
 
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
   nix.settings.trusted-users = ["root" "aidan"];
 
 }
