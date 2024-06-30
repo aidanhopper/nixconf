@@ -170,7 +170,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."media.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://192.168.254.30:8096
+      reverse_proxy http://jellyfin:8096
     '';
     virtualHosts."request.aidahop.xyz".extraConfig = ''
       reverse_proxy http://localhost:5055
