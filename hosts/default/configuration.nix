@@ -260,7 +260,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 80 ];
+          allowedTCPPorts = [ 8080 ];
         };
       };
     };
