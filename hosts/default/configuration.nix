@@ -183,37 +183,37 @@
   
   services.jellyfin.enable = true;
 
-# networking.nat = {
-#   enable = true;
-#   internalInterfaces = [ "eno0" ];
-#   externalInterface = "enp3s0";
-#   enableIPv6 = true;
-# };
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "eno0" ];
+    externalInterface = "enp3s0";
+    enableIPv6 = true;
+  };
   
-# containers.jellyfin = {
-#   autoStart = true;
-#   privateNetwork = true;
-#   hostAddress = "192.168.254.28";
-#   localAddress = "192.168.254.29";
-#   config = { config, pkgs, lib, ... }: {
-#     system.stateVersion = "unstable";
-#     services.jellyfin.enable = true;
-#     services.tailscale = {
-#       enable = true;
-#       extraSetFlags = [
-#         "--webclient"
-#       ];
-#     };
-#     networking = {
-#       firewall = {
-#         enable = true;
-#         allowedTCPPorts = [ 8096 5252 ];
-#       };
-#       useHostResolvConf = lib.mkForce false;
-#     };
-#     services.resolved.enable = true;
-#   };
-# };
+  containers.jellyfin = {
+    autoStart = true;
+    privateNetwork = true;
+    hostAddress = "192.168.254.28";
+    localAddress = "192.168.254.29";
+    config = { config, pkgs, lib, ... }: {
+      system.stateVersion = "unstable";
+      services.jellyfin.enable = true;
+      services.tailscale = {
+        enable = true;
+        extraSetFlags = [
+          "--webclient"
+        ];
+      };
+      networking = {
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 8096 5252 ];
+        };
+        useHostResolvConf = lib.mkForce false;
+      };
+      services.resolved.enable = true;
+    };
+  };
 
   services.lidarr = {
     enable = true;
