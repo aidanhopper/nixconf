@@ -256,7 +256,7 @@
         };
       };
     };
-  }
+  };
 
   hardware.opengl = {
     enable = true;
