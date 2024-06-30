@@ -205,6 +205,17 @@
       };
       services.resolved.enable = true;
     };
+
+    systemd.services.funnel = {
+      enable = true;
+      wants = [ "network-online.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
+        ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
+        Restart = "on-failure";
+      };
+    };
+
   };
 
   services.lidarr = {
@@ -224,15 +235,6 @@
 
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
-
-# systemd.services.jellyfinFunnel = {
-#   enable = true;
-#   serviceConfig = {
-#     ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-#     ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
-#     Restart = "on-failure";
-#   };
-# };
 
   systemd.services.qbittorrent = {
     enable = true;
