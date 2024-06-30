@@ -194,8 +194,12 @@
     hostAddress = "192.168.254.28";
     localAddress = "192.168.254.29";
     config = { config, pkgs, lib, ... }: {
-      services.jellyfin.enable = true;
       system.stateVersion = "unstable";
+      services.jellyfin.enable = true;
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "client";
+      };
       networking = {
         firewall = {
           enable = true;
