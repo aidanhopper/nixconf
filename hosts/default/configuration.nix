@@ -230,16 +230,33 @@
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
-  systemd.services.qbittorrent = {
-    enable = true;
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
-      ExecStop = "pkill qbittorrent-nox";
-      Restart = "on-failure";
+  containers.qbittorrent = {
+    bindMounts = {
+      "/Downloads" = {
+        hostPath = "/Downloads";
+        isReadOnly = false;
+      };
     };
-  };
+    config = { config, pkgs, lib, ... }: {
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "client"; # need this for mullvad to work
+        extraDaemonFlags = [
+          "--tun=userspace-networking"
+        ];
+      };
+      systemd.services.qbittorrent = {
+        enable = true;
+        after = [ "network.target" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+          ExecStop = "pkill qbittorrent-nox";
+          Restart = "on-failure";
+        };
+      };
+    };
+  }
 
   hardware.opengl = {
     enable = true;
