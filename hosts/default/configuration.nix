@@ -292,7 +292,7 @@
     useGlobalPkgs = true;
   };
 
-  services.udev.packages = [ pkgs.dolphinEmu ]
+  services.udev.packages = [ pkgs.dolphinEmu ];
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
