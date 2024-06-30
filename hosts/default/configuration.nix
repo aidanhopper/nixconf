@@ -184,7 +184,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "192.168.1.1";
-    hostAddress = "192.168.1.2";
+    localAddress = "192.168.1.2";
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
