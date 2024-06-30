@@ -192,7 +192,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "192.168.254.28";
-    hostAddress = "192.168.254.29";
+    localAddress = "192.168.254.29";
     config = { config, pkgs, lib, ... }: {
       services.nextcloud = {
         enable = true;
