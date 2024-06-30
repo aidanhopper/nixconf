@@ -162,9 +162,6 @@
 
   services.tailscale = {
     enable = true;
-    extraSetFlags = [
-      "--webclient"
-    ];
   };
 
   sunshine.enable = true;
