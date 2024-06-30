@@ -179,6 +179,9 @@
     virtualHosts."request.aidahop.xyz".extraConfig = ''
       reverse_proxy http://localhost:5055
     '';
+    virtualHosts."jellyfin.desktop.tail3eaf74.ts.net".extraConfig = ''
+      reverse_proxy http://localhost:8096
+    '';
   };
   
   services.jellyfin.enable = true;
@@ -190,30 +193,30 @@
     enableIPv6 = true;
   };
   
-  containers.jellyfin = {
-    autoStart = true;
-    privateNetwork = true;
-    hostAddress = "192.168.254.28";
-    localAddress = "192.168.254.29";
-    config = { config, pkgs, lib, ... }: {
-      system.stateVersion = "unstable";
-      services.jellyfin.enable = true;
-      services.tailscale = {
-        enable = true;
-        extraUpFlags = [
-          "--authkey $(sudo cat /secrets/tailscaleAuthKey)"
-        ];
-      };
-      networking = {
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 8096 5252 ];
-        };
-        useHostResolvConf = lib.mkForce false;
-      };
-      services.resolved.enable = true;
-    };
-  };
+# containers.jellyfin = {
+#   autoStart = true;
+#   privateNetwork = true;
+#   hostAddress = "192.168.254.28";
+#   localAddress = "192.168.254.29";
+#   config = { config, pkgs, lib, ... }: {
+#     system.stateVersion = "unstable";
+#     services.jellyfin.enable = true;
+#     services.tailscale = {
+#       enable = true;
+#       extraUpFlags = [
+#         "--authkey $(sudo cat /secrets/tailscaleAuthKey)"
+#       ];
+#     };
+#     networking = {
+#       firewall = {
+#         enable = true;
+#         allowedTCPPorts = [ 8096 5252 ];
+#       };
+#       useHostResolvConf = lib.mkForce false;
+#     };
+#     services.resolved.enable = true;
+#   };
+# };
 
   services.lidarr = {
     enable = true;
