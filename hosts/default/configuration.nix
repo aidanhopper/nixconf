@@ -199,6 +199,7 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
+        authKeyFile = "./secrets/tailscaleAuthKey";
       };
       networking = {
         firewall = {
