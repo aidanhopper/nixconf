@@ -27,7 +27,7 @@
     prismlauncher
     feishin
     jellyfin-media-player
-    dolphin-emu
+    retroarchFull
   ];
 
   sway.enable = true;
