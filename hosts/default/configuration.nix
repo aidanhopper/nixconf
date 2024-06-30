@@ -22,7 +22,6 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -30,14 +29,14 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.policy = [
-    "magic"
-    "unicast"
-  ];
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-
+  networking = {
+    hostName = "desktop"; # Define your hostname.
+    bridges.br0.interfaces = [ "enp3s0" ];
+    useDHCP = false;
+    interfaces."br0".useDHCP = true;
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 80 443 ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -181,37 +180,30 @@
   
   services.jellyfin.enable = true;
 
-  networking.nat = {
-    enable = true;
-    internalInterfaces = [ "eno0" ];
-    externalInterface = "enp3s0";
-    enableIPv6 = true;
-  };
   
-  containers.jellyfin = {
-    autoStart = true;
-    privateNetwork = true;
-    hostAddress = "192.168.254.28";
-    localAddress = "192.168.254.29";
-    config = { config, pkgs, lib, ... }: {
-      system.stateVersion = "unstable";
-      services.jellyfin.enable = true;
-      services.tailscale = {
-        enable = true;
-        extraUpFlags = [
-          "--authkey $(sudo cat /secrets/tailscaleAuthKey)"
-        ];
-      };
-      networking = {
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 8096 5252 ];
-        };
-        useHostResolvConf = lib.mkForce false;
-      };
-      services.resolved.enable = true;
-    };
-  };
+# containers.jellyfin = {
+#   autoStart = true;
+#   privateNetwork = true;
+#   hostBridge = "br0";
+#   config = { config, pkgs, lib, ... }: {
+#     system.stateVersion = "unstable";
+#     services.jellyfin.enable = true;
+#     services.tailscale = {
+#       enable = true;
+#       extraUpFlags = [
+#         #"--authkey $(sudo cat /secrets/tailscaleAuthKey)"
+#       ];
+#     };
+#     networking = {
+#       firewall = {
+#         enable = true;
+#         allowedTCPPorts = [ 8096 5252 ];
+#       };
+#       useHostResolvConf = lib.mkForce false;
+#     };
+#     services.resolved.enable = true;
+#   };
+# };
 
   services.lidarr = {
     enable = true;
