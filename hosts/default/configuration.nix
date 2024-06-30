@@ -196,13 +196,7 @@
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
-      services.tailscale = {
-        enable = true;
-        useRoutingFeatures = "client";
-        extraSetFlags = [
-          "--webclient"
-        ];
-      };
+      services.tailscale.enable = true;
       networking = {
         firewall = {
           enable = true;
