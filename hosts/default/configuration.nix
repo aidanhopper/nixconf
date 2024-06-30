@@ -196,7 +196,7 @@
       };
       services.resolved.enable = true;
     };
-  }
+  };
 
   services.lidarr = {
     enable = true;
