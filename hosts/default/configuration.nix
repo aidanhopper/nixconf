@@ -170,7 +170,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."media.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://localhost:8096
+      reverse_proxy http://192.168.254.30:8096
     '';
     virtualHosts."request.aidahop.xyz".extraConfig = ''
       reverse_proxy http://localhost:5055
@@ -207,16 +207,6 @@
         firewall = {
           enable = true;
           allowedTCPPorts = [ 8096 ];
-        };
-      };
-      systemd.services.funnel = {
-        enable = true;
-        after = [ "tailscaled.service" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-          ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
-          Restart = "on-failure";
         };
       };
     };
