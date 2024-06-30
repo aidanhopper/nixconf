@@ -231,6 +231,9 @@
   services.jellyseerr.enable = true;
 
   containers.qbittorrent = {
+    autoStart = true;
+    privateNetwork = true;
+    hostBridge = "br0";
     bindMounts = {
       "/Downloads" = {
         hostPath = "/Downloads";
@@ -253,6 +256,15 @@
           ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
           ExecStop = "pkill qbittorrent-nox";
           Restart = "on-failure";
+        };
+      };
+      networking = {
+        hostName = "qbittorrent"; # Define your hostname.
+        useDHCP = lib.mkForce true;
+        useHostResolvConf = lib.mkForce false;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 8080 ];
         };
       };
     };
