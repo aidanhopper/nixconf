@@ -210,8 +210,10 @@
         };
       };
       systemd.services.funnel = {
-        enable = true;
+        enable = true;-user
         wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
           ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
