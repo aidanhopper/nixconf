@@ -200,8 +200,8 @@
       services.jellyfin.enable = true;
       services.tailscale = {
         enable = true;
-        extraSetFlags = [
-          "--webclient"
+        extraUpFlags = [
+          "--authkey $(sudo cat /secrets/tailscaleAuthKey)"
         ];
       };
       networking = {
