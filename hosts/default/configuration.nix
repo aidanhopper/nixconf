@@ -193,13 +193,6 @@
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
-      services.tailscale = {
-        enable = true;
-        useRoutingFeatures = "client"; # need this for mullvad to work
-        extraDaemonFlags = [
-          "--tun=userspace-networking"
-        ];
-      };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
         useDHCP = lib.mkForce true;
