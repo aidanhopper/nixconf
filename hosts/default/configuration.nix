@@ -193,6 +193,16 @@
     privateNetwork = true;
     hostAddress = "192.168.254.28";
     localAddress = "192.168.254.29";
+    bindMounts = {
+      "/secrets" = {
+        hostPath = "/secrets";
+        isReadOnly = true;
+      };
+      "/media" = {
+        hostPath = "/media";
+        isReadOnly = true;
+      };
+    };
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
