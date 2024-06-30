@@ -196,8 +196,6 @@
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
-        useDHCP = true;
-        networkmanager.enable = true;
         firewall = {
           enable = true;
           allowedTCPPorts = [ 8096 5252 ];
