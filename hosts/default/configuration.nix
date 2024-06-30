@@ -97,7 +97,7 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "sound" "libvirtd" "media" ];
+    extraGroups = [ "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
       firefox
       xclip
@@ -183,8 +183,8 @@
   containers.jellyfin = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.254.1";
-    localAddress = "192.168.254.2";
+    hostAddress = "192.168.1.1";
+    localAddress = "192.168.1.2";
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
