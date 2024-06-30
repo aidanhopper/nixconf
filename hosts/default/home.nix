@@ -28,6 +28,7 @@
     feishin
     jellyfin-media-player
     retroarchFull
+    libretro.dolphin
   ];
 
   sway.enable = true;
