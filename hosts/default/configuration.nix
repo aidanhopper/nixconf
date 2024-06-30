@@ -234,6 +234,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
+    enableTun = true;
     bindMounts = {
       "/Downloads" = {
         hostPath = "/Downloads";
@@ -246,14 +247,6 @@
         useRoutingFeatures = "client"; # need this for mullvad to work
         extraDaemonFlags = [
         ];
-      };
-      systemd.services.tailscale-autostart = {
-        after = [ "qbittorrent.service" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.tailscale}/bin/tailscaled";
-          ExecStop = "pkill tailscaled";
-          Restart = "on-failure";
-        };
       };
       systemd.services.qbittorrent = {
         enable = true;
