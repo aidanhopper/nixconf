@@ -283,8 +283,6 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
-
-
   
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -293,6 +291,8 @@
     };
     useGlobalPkgs = true;
   };
+
+  services.udev.packages = [ pkgs.dolphinEmu ]
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
