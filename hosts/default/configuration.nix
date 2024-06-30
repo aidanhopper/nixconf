@@ -243,7 +243,7 @@
   systemd.services.qbittorrent = {
     enable = true;
     wants = [ "network-online.target" ];
-    after = [ "network-online.target" "nss-lookup.target" ]
+    after = [ "network-online.target" "nss-lookup.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
       ExecStop = "pkill qbittorrent-nox";
