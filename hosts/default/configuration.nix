@@ -184,9 +184,13 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.100.10";
+    hostAddress = "192.168.254.28";
     config = { config, pkgs, lib, ... }: {
-      services.nextcloud.enable = true;
+      services.nextcloud = {
+        enable = true;
+        hostName = "localhost";
+      };
+
       system.stateVersion = "unstable";
       networking = {
         firewall = {
