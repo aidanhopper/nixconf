@@ -203,19 +203,16 @@
           allowedTCPPorts = [ 8096 ];
         };
       };
-      services.resolved.enable = true;
-    };
-
-    systemd.services.funnel = {
-      enable = true;
-      wants = [ "network-online.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-        ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
-        Restart = "on-failure";
+      systemd.services.funnel = {
+        enable = true;
+        wants = [ "network-online.target" ];
+        serviceConfig = {
+          ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
+          ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
+          Restart = "on-failure";
+        };
       };
     };
-
   };
 
   services.lidarr = {
