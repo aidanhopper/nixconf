@@ -198,7 +198,8 @@
       services.jellyfin.enable = true;
       services.tailscale = {
         enable = true;
-        useRoutingFeatures = "server";
+        useRoutingFeatures = "client";
+        authKeyFile = builtins.toPath "/secrets/tailscaleAuthKey";
       };
       networking = {
         firewall = {
