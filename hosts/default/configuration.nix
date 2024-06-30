@@ -184,6 +184,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
+    enableTun = true;
     bindMounts = {
       "/media" = {
         hostPath = "/media";
@@ -196,9 +197,6 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client"; # need this for mullvad to work
-        extraDaemonFlags = [
-          "--tun=userspace-networking"
-        ];
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
@@ -245,8 +243,6 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client"; # need this for mullvad to work
-        extraDaemonFlags = [
-        ];
       };
       systemd.services.qbittorrent = {
         enable = true;
