@@ -225,6 +225,11 @@
     group = "media";
   };
 
+  services.readarr = {
+    enable = true;
+    group = "media";
+  };
+
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
