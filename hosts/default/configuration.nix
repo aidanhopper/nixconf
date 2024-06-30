@@ -190,6 +190,9 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client"; # need this for mullvad to work
+        extraDaemonFlags = [
+          "--tun=userspace-networking"
+        ]
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
