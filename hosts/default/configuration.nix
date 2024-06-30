@@ -189,9 +189,6 @@
       services.jellyfin.enable = true;
       services.tailscale = {
         enable = true;
-        extraUpFlags = [
-          #"--authkey $(sudo cat /secrets/tailscaleAuthKey)"
-        ];
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
