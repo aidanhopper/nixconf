@@ -184,6 +184,12 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
+    bindMounts = {
+      "/media" = {
+        hostPath = "/media";
+        isReadOnly = true;
+      };
+    };
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
