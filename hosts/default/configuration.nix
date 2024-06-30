@@ -233,14 +233,14 @@
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
 
-  systemd.services.jellyfinFunnel = {
-    enable = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
-      ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
-      Restart = "on-failure";
-    };
-  };
+# systemd.services.jellyfinFunnel = {
+#   enable = true;
+#   serviceConfig = {
+#     ExecStart = "${pkgs.tailscale}/bin/tailscale funnel 8096";
+#     ExecStop = "${pkgs.tailscale}/bin/tailscale funnel reset";
+#     Restart = "on-failure";
+#   };
+# };
 
   systemd.services.qbittorrent = {
     enable = true;
