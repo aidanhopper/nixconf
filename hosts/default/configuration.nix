@@ -179,8 +179,6 @@
     '';
   };
   
-  jellyfin.enable = true;
-
   networking.nat = {
     enable = true;
     internalInterfaces = [ "eno0" ];
@@ -188,19 +186,13 @@
     enableIPv6 = true;
   };
   
-  containers.nextcloud = {
+  containers.jellyfin = {
     autoStart = true;
     privateNetwork = true;
     hostAddress = "192.168.254.28";
     localAddress = "192.168.254.29";
     config = { config, pkgs, lib, ... }: {
-      services.nextcloud = {
-        enable = true;
-        package = pkgs.nextcloud29;
-        hostName = "localhost";
-        config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
-      };
-
+      services.jellyfin.enable = true;
       system.stateVersion = "unstable";
       networking = {
         firewall = {
