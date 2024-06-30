@@ -199,7 +199,7 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
-        authKeyFile = builtins.toPath "/nixconf/secrets/tailscaleAuthKey";
+        authKeyFile = builtins.toPath "/secrets/tailscaleAuthKey";
       };
       networking = {
         firewall = {
