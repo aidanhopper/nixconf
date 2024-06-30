@@ -36,7 +36,7 @@
     "magic"
     "unicast"
   ];
-  networking.firewall.allowedTCPPorts = [ 80 443];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
 
   # Set your time zone.
@@ -162,6 +162,7 @@
 
   services.tailscale = {
     enable = true;
+    useRoutingFeatures = "client";
   };
 
   sunshine.enable = true;
