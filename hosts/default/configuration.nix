@@ -169,11 +169,6 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
-  security.acme = {
-    acceptTerms = true;
-    email = "aidanhop1@gmail.com";
-  };
-
   services.caddy = {
     enable = true;
     virtualHosts."media.aidahop.xyz".extraConfig = ''
@@ -184,8 +179,24 @@
     '';
   };
   
-  #  dns cloudflare qKLz56pO8Tk2cF0MjrvasdVAhN1mRcQjIB8TubZS
   jellyfin.enable = true;
+  
+  containers.nextcloud = {
+    autoStart = true;
+    privateNetwork = true;
+    config = { config, pkgs, lib, ... }: {
+      services.nextcloud.enable = true;
+      system.stateVersion = "unstable";
+      networking = {
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 80 ];
+        };
+        useHostResolvConf = lib.mkForce false;
+      };
+      services.resolved.enable = true;
+    };
+  }
 
   services.lidarr = {
     enable = true;
@@ -204,7 +215,6 @@
 
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
-
 
   systemd.services.jellyfinFunnel = {
     enable = true;
