@@ -183,8 +183,8 @@
   containers.jellyfin = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.1.1";
-    localAddress = "192.168.1.2";
+    hostAddress = "192.168.1.1/24";
+    localAddress = "192.168.1.2/24";
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
