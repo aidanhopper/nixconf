@@ -199,7 +199,7 @@
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 80 ];
+          allowedTCPPorts = [ 8096 ];
         };
         useHostResolvConf = lib.mkForce false;
       };
