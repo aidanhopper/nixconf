@@ -176,19 +176,16 @@
     virtualHosts."request.aidahop.xyz".extraConfig = ''
       reverse_proxy http://localhost:5055
     '';
-    virtualHosts."jellyfin.desktop.tail3eaf74.ts.net".extraConfig = ''
-      reverse_proxy http://localhost:8096
-    '';
   };
   
   services.jellyfin.enable = true;
 
-  networking.nat = {
-    enable = true;
-    internalInterfaces = [ "eno0" ];
-    externalInterface = "enp3s0";
-    enableIPv6 = true;
-  };
+# networking.nat = {
+#   enable = true;
+#   internalInterfaces = [ "eno0" ];
+#   externalInterface = "enp3s0";
+#   enableIPv6 = true;
+# };
   
 # containers.jellyfin = {
 #   autoStart = true;
