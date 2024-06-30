@@ -162,7 +162,9 @@
 
   services.tailscale = {
     enable = true;
-    useRoutingFeatures = "client";
+    extraSetFlags = [
+      "--webclient"
+    ];
   };
 
   sunshine.enable = true;
@@ -201,7 +203,6 @@
         extraSetFlags = [
           "--webclient"
         ];
-
       };
       networking = {
         firewall = {
