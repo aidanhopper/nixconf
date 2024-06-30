@@ -185,6 +185,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
+    localAddress = "192.168.254.29";
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
