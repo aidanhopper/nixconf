@@ -210,7 +210,7 @@
         };
       };
       systemd.services.funnel = {
-        enable = true;-user
+        enable = true;
         wants = [ "network-online.target" ];
         after = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
