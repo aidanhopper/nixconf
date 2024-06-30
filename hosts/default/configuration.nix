@@ -247,6 +247,14 @@
         extraDaemonFlags = [
         ];
       };
+      systemd.services.tailscale-autostart = {
+        after = [ "network.target" ];
+        serviceConfig = {
+          ExecStart = "${pkgs.tailscale}/bin/tailscaled";
+          ExecStop = "pkill tailscaled";
+          Restart = "on-failure";
+        };
+      };
       systemd.services.qbittorrent = {
         enable = true;
         after = [ "network.target" ];
