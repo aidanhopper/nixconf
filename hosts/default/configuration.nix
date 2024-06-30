@@ -198,12 +198,12 @@
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
-      services.tailscale = {
-        enable = true;
-        extraSetFlags = [
-          "--webclient"
-        ];
-      };
+#     services.tailscale = {
+#       enable = true;
+#       extraSetFlags = [
+#         "--webclient"
+#       ];
+#     };
       networking = {
         firewall = {
           enable = true;
