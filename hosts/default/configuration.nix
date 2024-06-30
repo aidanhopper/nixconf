@@ -34,7 +34,7 @@
     bridges.br0.interfaces = [ "enp3s0" ];
     useDHCP = false;
     interfaces."br0".useDHCP = true;
-    useNetworkd = true;
+    networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 80 443 ];
   };
 
