@@ -196,8 +196,8 @@
       };
       networking = {
         hostName = "jellyfin"; # Define your hostname.
+        useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
-        useDHCP = true;
         firewall = {
           enable = true;
           allowedTCPPorts = [ 8096 5252 ];
