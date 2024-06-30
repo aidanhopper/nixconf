@@ -232,7 +232,7 @@
 
   systemd.services.qbittorrent = {
     enable = true;
-    after = [ "network" ];
+    after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
