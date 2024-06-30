@@ -183,8 +183,8 @@
 
   networking.nat = {
     enable = true;
-    internalInterfaces = [ "eno1" ];
-    externalInterface = [ "eno0" ];
+    internalInterfaces = [ "eno0" ];
+    externalInterface = "enp3s0";
     enableIPv6 = true;
   };
   
