@@ -200,6 +200,7 @@
           allowedTCPPorts = [ 8096 ];
         };
       };
+      services.resolved.enable = true;
     };
   };
 
