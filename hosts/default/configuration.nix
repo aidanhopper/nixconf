@@ -190,6 +190,7 @@
         enable = true;
         package = pkgs.nextcloud28;
         hostName = "localhost";
+        config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
       };
 
       system.stateVersion = "unstable";
