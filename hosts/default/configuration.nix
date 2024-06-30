@@ -179,6 +179,8 @@
     '';
   };
   
+  services.jellyfin.enable = true;
+
   networking.nat = {
     enable = true;
     internalInterfaces = [ "eno0" ];
