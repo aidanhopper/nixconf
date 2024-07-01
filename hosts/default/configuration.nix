@@ -62,7 +62,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
   services.xserver = {
@@ -276,13 +276,13 @@
     driSupport32Bit = true;
   };
   
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
+# hardware.nvidia = {
+#   modesetting.enable = true;
+#   powerManagement.enable = true;
+#   open = false;
+#   nvidiaSettings = true;
+#   package = config.boot.kernelPackages.nvidiaPackages.beta;
+# };
   
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
