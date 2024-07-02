@@ -175,7 +175,6 @@
     ephemeral = true;
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
-      services.caddy = {
         services.tailscale = {
           enable = true;
           useRoutingFeatures = "client"; # need this for mullvad to work
