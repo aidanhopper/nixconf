@@ -168,7 +168,6 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client"; # need this for mullvad to work
-    authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
   };
 
   sunshine.enable = true;
@@ -187,11 +186,17 @@
         isReadOnly = true;
       };
     };
-    config = { config, pkgs, lib, ... }: {
+    config = { config, pkgs, lib, ... }: 
+    let
+      tailscaleAuthFile = config.sops.secrets.tailscaleAuthKey.path;
+    in
+
+    {
       system.stateVersion = "unstable";
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
+        authKeyFile = tailscaleAuthKey;
       };
       services.caddy = {
         enable = true;
