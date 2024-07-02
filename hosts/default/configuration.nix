@@ -184,7 +184,7 @@
         '';
       };
       networking = {
-        hostName = "jellyfin"; # Define your hostname.
+        hostName = "caddy.service"; # Define your hostname.
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
         firewall = {
