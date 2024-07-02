@@ -189,7 +189,7 @@
     };
     config = { self, config, pkgs, lib, ... }@inputs: 
     {
-      imports = [ inputs.sops-nix.nixosModules.sops ]
+      imports = [ inputs.sops-nix.nixosModules.sops ];
       system.stateVersion = "unstable";
       services.tailscale = {
         enable = true;
