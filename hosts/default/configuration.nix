@@ -196,7 +196,7 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
-        authKeyFile = tailscaleAuthKey;
+        authKeyFile = tailscaleAuthFile;
       };
       services.caddy = {
         enable = true;
