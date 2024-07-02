@@ -186,7 +186,7 @@
         isReadOnly = true;
       };
     };
-    config = { config, pkgs, lib, ... }: 
+    config = { config, pkgs, lib, ... }@inputs: 
     let
       tailscaleAuthFile = config.sops.secrets.tailscaleAuthKey.path;
     in
