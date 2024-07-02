@@ -184,7 +184,7 @@
         '';
       };
       networking = {
-        hostName = "caddy.service"; # Define your hostname.
+        hostName = "caddy"; # Define your hostname.
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
         firewall = {
