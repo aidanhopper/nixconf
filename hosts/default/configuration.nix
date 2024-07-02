@@ -16,7 +16,7 @@
 
   system.stateVersion = "unstable";
 
-  sops.defaultSopsFile = secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
