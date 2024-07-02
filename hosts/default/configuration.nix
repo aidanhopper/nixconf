@@ -187,7 +187,7 @@
         isReadOnly = true;
       };
     };
-    config = { self, config, pkgs, lib, ... }@inputs: 
+    config = { self, inputs, config, pkgs, lib, ... }: 
     {
       imports = [ inputs.sops-nix.nixosModules.sops ];
       system.stateVersion = "unstable";
