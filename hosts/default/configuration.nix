@@ -173,10 +173,12 @@
       reverse_proxy http://jellyfin:8096
     '';
     virtualHosts."request.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://192.168.1.1:5055
+      reverse_proxy http://localhost:5055
     '';
   };
   
+  services.jellyfin.enable = true;
+
   containers.caddy = {
     autoStart = true;
     privateNetwork = true;
@@ -192,6 +194,15 @@
         virtualHosts."request.aidahop.xyz".extraConfig = ''
           reverse_proxy http://192.168.1.1:5055
         '';
+      };
+      networking = {
+        hostName = "jellyfin"; # Define your hostname.
+        useDHCP = lib.mkForce true;
+        useHostResolvConf = lib.mkForce false;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 8096 ];
+        };
       };
     };
   };
@@ -248,7 +259,7 @@
 
   services.radarr = {
     enable = true;
-    groupjellyfin = "media";
+    group = "media";
   };
 
   services.readarr = {
