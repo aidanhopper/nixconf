@@ -175,10 +175,11 @@
     ephemeral = true;
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
-        services.tailscale = {
-          enable = true;
-          useRoutingFeatures = "client"; # need this for mullvad to work
-        };
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "client"; # need this for mullvad to work
+      };
+      services.caddy = {
         enable = true;
         virtualHosts."media.aidahop.xyz".extraConfig = ''
           reverse_proxy http://192.168.1.30:8096
