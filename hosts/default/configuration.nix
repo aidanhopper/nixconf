@@ -21,6 +21,7 @@
   sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
   sops.secrets.tailscaleAuthKey = { };
+  sops.secrets.tailscaleAPIKey = { };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -192,6 +193,16 @@
         enable = true;
         useRoutingFeatures = "client";
         authKeyFile = /run/secrets/tailscaleAuthKey;
+      };
+      systemd.services.resetTailscale = {
+        enable = true;
+        after = [ "network.target" ];
+        before = [ "tailscaled.service" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          type = "oneshot"
+          ExecStart = "curl -X DELETE 'https://api.tailscale.com/api/v2/device/caddy";
+        };
       };
       services.caddy = {
         enable = true;
