@@ -181,15 +181,9 @@
     hostBridge = "br0";
     enableTun = true;
     ephemeral = true;
-    bindMounts = {
-      "/secrets" = {
-        hostPath = "/secrets";
-        isReadOnly = true;
-      };
-    };
-    config = { self, inputs, config, pkgs, lib, ... }: 
+    bindMounts."${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
+    config = { config, pkgs, lib, ... }: 
     {
-      imports = [ inputs.sops-nix.nixosModules.sops ];
       system.stateVersion = "unstable";
       services.tailscale = {
         enable = true;
