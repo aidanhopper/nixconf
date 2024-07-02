@@ -184,7 +184,6 @@
     privateNetwork = true;
     hostBridge = "br0";
     enableTun = true;
-    ephemeral = true;
     bindMounts."${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
     config = { config, pkgs, lib, ... }: 
     {
@@ -288,11 +287,13 @@
         hostPath = "/Downloads";
         isReadOnly = false;
       };
+      "${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
     };
     config = { config, pkgs, lib, ... }: {
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client"; # need this for mullvad to work
+        authKeyFile = /run/secrets/tailscaleAuthKey;
       };
       systemd.services.qbittorrent = {
         enable = true;
