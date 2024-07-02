@@ -10,8 +10,15 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
+
+  system.stateVersion = "unstable";
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt"
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,9 +72,9 @@
   #services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -102,6 +109,7 @@
       firefox
       xclip
       qbittorrent-nox
+      sops
     #  thunderbird
     ];
   };
@@ -141,7 +149,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  system.stateVersion = "23.11"; # Did you read the comment?
 
   # List services that you want to enable:
 
@@ -184,9 +191,7 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
-        extraUpFlags = [
-          "--authkey $(sudo cat /secrets/tailscaleAuthKey)"
-        ];
+        authKeyFile = config.sops.secrets."tailscaleAuthKey".path;
       };
       services.caddy = {
         enable = true;
@@ -301,9 +306,9 @@
     };
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   
 # hardware.nvidia = {
