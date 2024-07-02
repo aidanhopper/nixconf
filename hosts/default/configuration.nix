@@ -234,13 +234,15 @@
         hostPath = "/media";
         isReadOnly = true;
       };
+      "${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
     };
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.jellyfin.enable = true;
       services.tailscale = {
         enable = true;
-        useRoutingFeatures = "client"; # need this for mullvad to work
+        useRoutingFeatures = "client";
+        authKeyFile = /run/secrets/tailscaleAuthKey;
       };
       networking = {
         hostName = "jellyfin";
