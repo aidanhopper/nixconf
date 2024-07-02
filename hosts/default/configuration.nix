@@ -191,7 +191,7 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
-        authKeyFile = ${config.sops.secrets."tailscaleAuthKey".path};
+        authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
       };
       services.caddy = {
         enable = true;
