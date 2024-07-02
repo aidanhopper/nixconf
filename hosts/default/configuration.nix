@@ -16,7 +16,7 @@
 
   system.stateVersion = "unstable";
 
-  sops.defaultSopsFile = "./secrets/secrets.yaml";
+  sops.defaultSopsFile = /nixconf/secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
@@ -168,7 +168,7 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client"; # need this for mullvad to work
-    authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
+    #authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
   };
 
   sunshine.enable = true;
