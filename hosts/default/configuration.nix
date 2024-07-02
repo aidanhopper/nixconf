@@ -200,7 +200,7 @@
         before = [ "tailscaled.service" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          type = "oneshot"
+          type = "oneshot";
           ExecStart = "curl -X DELETE 'https://api.tailscale.com/api/v2/device/caddy";
         };
       };
