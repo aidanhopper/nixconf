@@ -171,10 +171,15 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
+    enableTun = true;
     ephemeral = true;
     config = { config, pkgs, lib, ... }: {
       system.stateVersion = "unstable";
       services.caddy = {
+        services.tailscale = {
+          enable = true;
+          useRoutingFeatures = "client"; # need this for mullvad to work
+        };
         enable = true;
         virtualHosts."media.aidahop.xyz".extraConfig = ''
           reverse_proxy http://192.168.1.30:8096
@@ -184,7 +189,7 @@
         '';
       };
       networking = {
-        hostName = "caddy"; # Define your hostname.
+        hostName = "caddy";
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
         firewall = {
@@ -215,7 +220,7 @@
         useRoutingFeatures = "client"; # need this for mullvad to work
       };
       networking = {
-        hostName = "jellyfin"; # Define your hostname.
+        hostName = "jellyfin";
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
         firewall = {
