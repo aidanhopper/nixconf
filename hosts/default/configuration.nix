@@ -167,18 +167,33 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
-  services.caddy = {
-    enable = true;
-    virtualHosts."media.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://jellyfin:8096
-    '';
-    virtualHosts."request.aidahop.xyz".extraConfig = ''
-      reverse_proxy http://localhost:5055
-    '';
+  containers.caddy = {
+    autoStart = true;
+    privateNetwork = true;
+    hostBridge = "br0";
+    ephemeral = true;
+    config = { config, pkgs, lib, ... }: {
+      system.stateVersion = "unstable";
+      services.caddy = {
+        enable = true;
+        virtualHosts."media.aidahop.xyz".extraConfig = ''
+          reverse_proxy http://192.168.1.30:8096
+        '';
+        virtualHosts."request.aidahop.xyz".extraConfig = ''
+          reverse_proxy http://192.168.1.1:5055
+        '';
+      };
+      networking = {
+        hostName = "jellyfin"; # Define your hostname.
+        useDHCP = lib.mkForce true;
+        useHostResolvConf = lib.mkForce false;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 443 ];
+        };
+      };
+    };
   };
-  
-  services.jellyfin.enable = true;
-
 
   services.lidarr = {
     enable = true;
