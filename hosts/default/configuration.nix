@@ -195,16 +195,6 @@
     };
   };
 
-  services.lidarr = {
-    enable = true;
-    group = "media";
-  };
-
-  services.sonarr = {
-    enable = true;
-    group = "media";
-  };
-  
   containers.jellyfin = {
     autoStart = true;
     privateNetwork = true;
