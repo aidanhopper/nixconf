@@ -174,6 +174,7 @@
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
   ssh.enable = true;
 
+
   containers.caddy = {
     autoStart = true;
     privateNetwork = true;
@@ -187,16 +188,13 @@
       };
     };
     config = { self, config, pkgs, lib, ... }@inputs: 
-    let
-      tailscaleAuthFile = config.sops.secrets.tailscaleAuthKey.path;
-    in
-
     {
+      imports = [ inputs.sops-nix.nixosModules.sops ]
       system.stateVersion = "unstable";
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "client";
-        authKeyFile = tailscaleAuthFile;
+        #authKeyFile = tailscaleAuthFile;
       };
       services.caddy = {
         enable = true;
