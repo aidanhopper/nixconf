@@ -258,9 +258,9 @@
 
   containers.vaultwarden = {
     autoStart = true;
-    privateNetwork = true;
-    hostBridge = "br0";
-    enableTun = true;
+    #privateNetwork = true;
+    #hostBridge = "br0";
+    #enableTun = true;
     config = { config, pkgs, lib, ...}: {
       system.stateVersion = "unstable";
       services.vaultwarden = {
