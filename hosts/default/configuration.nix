@@ -269,7 +269,6 @@
       services.vaultwarden = {
         enable = true;
         environmentFile = {
-          adminToken
         };
       };
       networking = {
