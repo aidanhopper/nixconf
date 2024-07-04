@@ -268,8 +268,6 @@
       system.stateVersion = "unstable";
       services.vaultwarden = {
         enable = true;
-        environmentFile = {
-        };
       };
       networking = {
         hostName = "vaultwarden";
