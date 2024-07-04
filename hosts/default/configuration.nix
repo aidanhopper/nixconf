@@ -273,9 +273,9 @@
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
         firewall = {
-          enable = false;
-          allowedTCPPorts = [ 8222 ];
-          allowedUDPPorts = [ 8222 ];
+          enable = true;
+          allowedTCPPorts = [ 8222 80 ];
+          allowedUDPPorts = [ 8222 80 ];
         };
       };
     };
