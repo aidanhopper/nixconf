@@ -275,6 +275,7 @@
         firewall = {
           enable = true;
           allowedTCPPorts = [ 8222 ];
+          allowedUDPPorts = [ 8222 ];
         };
       };
     };
