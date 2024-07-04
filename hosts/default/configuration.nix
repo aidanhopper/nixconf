@@ -263,7 +263,7 @@
     #privateNetwork = true;
     #hostBridge = "br0";
     #enableTun = true;
-    "${config.sops.secrets.vaultwardenMasterPassword.path}".isReadOnly = true;
+    #"${config.sops.secrets.vaultwardenMasterPassword.path}".isReadOnly = true;
     config = { config, pkgs, lib, ...}: {
       system.stateVersion = "unstable";
       services.vaultwarden = {
