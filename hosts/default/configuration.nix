@@ -22,6 +22,7 @@
 
   sops.secrets.tailscaleAuthKey = { };
   sops.secrets.tailscaleAPIKey = { };
+  sops.secrets.vaultwardenMasterPassword = { };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -258,15 +259,17 @@
 
   containers.vaultwarden = {
     autoStart = true;
+    ephemeral = true;
     #privateNetwork = true;
     #hostBridge = "br0";
     #enableTun = true;
+    "${config.sops.secrets.vaultwardenMasterPassword.path}".isReadOnly = true;
     config = { config, pkgs, lib, ...}: {
       system.stateVersion = "unstable";
       services.vaultwarden = {
         enable = true;
-        config = {
-
+        environmentFile = {
+          adminToken
         };
       };
       networking = {

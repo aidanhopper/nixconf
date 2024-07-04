@@ -28,6 +28,7 @@
     feishin
     jellyfin-media-player
     dolphin-emu
+    bitwarden-desktop
   ];
 
   sway.enable = true;
