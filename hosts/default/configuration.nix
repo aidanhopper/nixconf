@@ -259,10 +259,6 @@
 
   containers.vaultwarden = {
     autoStart = true;
-    privateNetwork = true;
-    hostBridge = "br0";
-    enableTun = true;
-    #"${config.sops.secrets.vaultwardenMasterPassword.path}".isReadOnly = true;
     config = { config, pkgs, lib, ...}: {
       system.stateVersion = "unstable";
       services.vaultwarden = {
@@ -272,11 +268,6 @@
         hostName = "vaultwarden";
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 8222 80 ];
-          allowedUDPPorts = [ 8222 80 ];
-        };
       };
     };
   };
