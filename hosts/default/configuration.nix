@@ -259,10 +259,9 @@
 
   containers.vaultwarden = {
     autoStart = true;
-    ephemeral = true;
-    #privateNetwork = true;
-    #hostBridge = "br0";
-    #enableTun = true;
+    privateNetwork = true;
+    hostBridge = "br0";
+    enableTun = true;
     #"${config.sops.secrets.vaultwardenMasterPassword.path}".isReadOnly = true;
     config = { config, pkgs, lib, ...}: {
       system.stateVersion = "unstable";
