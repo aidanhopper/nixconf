@@ -269,6 +269,7 @@
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
       };
+      services.resolved.enable = true;
     };
   };
 
