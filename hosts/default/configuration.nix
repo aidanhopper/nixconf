@@ -272,6 +272,10 @@
         hostName = "vaultwarden";
         useDHCP = lib.mkForce true;
         useHostResolvConf = lib.mkForce false;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 8222 ];
+        };
       };
     };
   };
