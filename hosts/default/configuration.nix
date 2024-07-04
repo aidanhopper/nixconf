@@ -256,6 +256,27 @@
     };
   };
 
+  containers.vaultwarden = {
+    autoStart = true;
+    privateNetwork = true;
+    hostBridge = "br0";
+    enableTun = true;
+    config = { config, pkgs, lib, ...}: {
+      system.stateVersion = "unstable";
+      services.vaultwarden = {
+        enable = true;
+        config = {
+
+        };
+      };
+      networking = {
+        hostName = "vaultwarden";
+        useDHCP = lib.mkForce true;
+        useHostResolvConf = lib.mkForce false;
+      };
+    };
+  };
+
   services.lidarr = {
     enable = true;
     group = "media";
