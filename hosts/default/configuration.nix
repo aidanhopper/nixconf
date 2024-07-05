@@ -73,7 +73,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  #services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -257,28 +257,6 @@
     };
   };
 
-  containers.vaultwarden = {
-    autoStart = true;
-    privateNetwork = true;
-    hostBridge = "br0";
-    config = { config, pkgs, lib, ...}: {
-      system.stateVersion = "unstable";
-      services.vaultwarden = {
-        enable = true;
-      };
-      networking = {
-        hostName = "vaultwarden";
-        useDHCP = lib.mkForce true;
-        useHostResolvConf = lib.mkForce false;
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 8222 ];
-        };
-      };
-      services.resolved.enable = true;
-    };
-  };
-
   services.lidarr = {
     enable = true;
     group = "media";
@@ -347,13 +325,13 @@
     enable32Bit = true;
   };
   
-# hardware.nvidia = {
-#   modesetting.enable = true;
-#   powerManagement.enable = true;
-#   open = false;
-#   nvidiaSettings = true;
-#   package = config.boot.kernelPackages.nvidiaPackages.beta;
-# };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
   
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
