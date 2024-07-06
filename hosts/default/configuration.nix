@@ -14,7 +14,6 @@
       ../../nixosModules
     ];
 
-  system.stateVersion = "unstable";
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
@@ -279,6 +278,7 @@
 
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
+  services.miniflux.enable = true;
 
   containers.qbittorrent = {
     autoStart = true;
@@ -346,5 +346,7 @@
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   nix.settings.trusted-users = ["root" "aidan"];
+
+  system.stateVersion = "unstable";
 
 }
