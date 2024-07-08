@@ -28,6 +28,7 @@
     feishin
     jellyfin-media-player
     dolphin-emu
+    rpcs3
   ];
 
   sway.enable = true;

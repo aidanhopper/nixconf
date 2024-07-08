@@ -278,7 +278,6 @@
 
   services.prowlarr.enable = true;
   services.jellyseerr.enable = true;
-  services.miniflux.enable = true;
 
   containers.qbittorrent = {
     autoStart = true;
