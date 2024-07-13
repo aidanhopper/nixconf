@@ -49,8 +49,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -342,7 +340,7 @@
     useGlobalPkgs = true;
   };
 
-  services.udev.packages = [ pkgs.dolphinEmu ];
+  services.udev.packages = [ pkgs.dolphinEmu pkgs.via ];
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
