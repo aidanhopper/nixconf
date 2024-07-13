@@ -332,7 +332,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   
-  hardware.keyboard.qmk.enable = true
+  hardware.keyboard.qmk.enable = true;
   
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
