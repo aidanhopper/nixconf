@@ -111,6 +111,7 @@
       xclip
       qbittorrent-nox
       sops
+      mopidy-jellyfin
     #  thunderbird
     ];
   };
@@ -121,7 +122,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    via
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -341,7 +341,10 @@
     useGlobalPkgs = true;
   };
 
-  services.udev.packages = [ pkgs.dolphinEmu pkgs.via ];
+  services.udev.packages = [ pkgs.dolphinEmu ];
+
+  services.mopidy.enable = true;
+
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
