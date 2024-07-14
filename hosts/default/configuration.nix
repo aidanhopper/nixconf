@@ -342,12 +342,6 @@
 
   services.udev.packages = [ pkgs.dolphinEmu ];
 
-  services.mopidy = {
-    enable = true;
-    extensionPackages = with pkgs; [ mopidy-jellyfin ];
-  };
-
-
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   nix.settings.trusted-users = ["root" "aidan"];
