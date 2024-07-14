@@ -29,7 +29,6 @@
     jellyfin-media-player
     dolphin-emu
     rpcs3
-    via
   ];
 
   sway.enable = true;
