@@ -104,6 +104,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    via
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -125,6 +126,10 @@
     enable = true;
     driSupport32Bit = true;
   };
+
+  services.udev.packages = with pkgs; [ via ];
+
+  hardware.keyboard.qmk.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
