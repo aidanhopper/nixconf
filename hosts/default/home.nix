@@ -29,6 +29,7 @@
     jellyfin-media-player
     dolphin-emu
     rpcs3
+    gnome-monitor-config
   ];
 
   sway.enable = true;
