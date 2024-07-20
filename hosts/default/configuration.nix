@@ -106,7 +106,7 @@
     description = "aidan";
     extraGroups = [ "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
-      firefox
+      chromium
       xclip
       qbittorrent-nox
       sops
