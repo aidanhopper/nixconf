@@ -342,7 +342,7 @@
   virtualisation.oci-containers.containers.crafty = {
     image = "arcadiatechnology/crafty-4:latest";
     ports = [
-      8080
+      "8080"
     ];
   };
 
