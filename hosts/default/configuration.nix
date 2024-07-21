@@ -197,7 +197,7 @@
   containers.caddy = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br0"=;
+    hostBridge = "br0";
     enableTun = true;
     bindMounts."${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
     config = { config, pkgs, lib, ... }: 
