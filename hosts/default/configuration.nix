@@ -340,11 +340,9 @@
     };
   };
 
-  services.minecraft-servers.modpack =
+  services.minecraft-servers.servers.modpack =
   {
-    services.minecraft-servers.servers.astralCreate = {
-      enable = true;
-    };
+    enable = true;
   };
 
   hardware.graphics = {
