@@ -11,11 +11,8 @@
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
       inputs.sops-nix.nixosModules.sops
-      inputs.nix-minecraft.nixosModules.minecraft-servers
       ../../nixosModules
     ];
-
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
@@ -342,9 +339,12 @@
     };
   };
 
-  services.minecraft-servers.servers.astralCreate = {
-    enable = true;
-    package = pkgs.vanillaServers.vanilla-1-21;
+  virtualisation.oci-containers.containers.crafty = {
+    name = "crafty";
+    image = "arcadiatechnology/crafty-4:latest";
+    ports = [
+      8080
+    ];
   };
 
   hardware.graphics = {

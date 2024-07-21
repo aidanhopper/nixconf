@@ -8,8 +8,6 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
