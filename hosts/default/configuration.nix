@@ -24,21 +24,6 @@
   sops.secrets.vaultwardenMasterPassword = { };
   sops.secrets.sshKey = { };
 
-  boot.kernelParams = [ "ip=dhcp" ];
-  boot.initrd = {
-    availableKernelModules = [ "r8169" ];
-    systemd.users.root.shell = "/bin/cryptsetup-askpass";
-    network = {
-      enable = true;
-      ssh = {
-        enable = true;
-        port = 22;
-        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElBiCeuhYeemvHxL3CTr5dqNX+rFVFRH0YWp3t4r4je aidanhop1@gmail.com" ];
-        hostKeys = [ "/home/aidan/.ssh/id_ed25519" ];
-      };
-    };
-  };
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -86,7 +71,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "aidan";
 
   services.xserver.videoDrivers = ["nvidia"];
 
