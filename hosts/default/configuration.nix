@@ -187,7 +187,7 @@
     };
     apps = [
       {
-          name: "Desktop",
+        name: "Desktop";
       }
     ];
   };
