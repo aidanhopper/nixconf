@@ -71,7 +71,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.displayManager.autoLogin = true;
-  services.xserver.displayManager.autoLogin.user = "aidan";
+  services.displayManager.autoLogin.user = "aidan";
 
   services.xserver.videoDrivers = ["nvidia"];
 
