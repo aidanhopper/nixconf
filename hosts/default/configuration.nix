@@ -113,7 +113,7 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "wheel" "input" "video" "sound" "libvirtd" "media" ];
+    extraGroups = [ "docker" "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
       chromium
       xclip
@@ -340,15 +340,17 @@
     };
   };
 
-  services.pufferpanel = {
-    enable = true;
-    extraPackages = with pkgs; [ bash curl gawk gnutar gzip ];
-    package = pkgs.buildFHSEnv {
-      name = "pufferpanel-fhs";
-      runScript = lib.getExe pkgs.pufferpanel;
-      targetPkgs = pkgs': with pkgs'; [ icu openssl zlib ];
+  virtualization.docker.enable = true;
+  virtualization.oci-containers = {
+    backend = "docker";
+    containers = {
+      pterodactyl = {
+        autoStart = true;
+        image = "ccarney16/pterodactyl-panel:latest";
+      };
     };
   };
+
 
   hardware.graphics = {
     enable = true;
