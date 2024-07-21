@@ -13,7 +13,7 @@
 
   home.packages = with pkgs; [
     discord
-    firefox
+    chromium
     steam
     spotify
     wl-clipboard
