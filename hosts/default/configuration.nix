@@ -341,9 +341,18 @@
     };
   };
 
-  services.minecraft-servers.servers.modpack =
+  services.minecraft-servers.servers.astralCreate =
+  let
+    modpack = pkgs.fetchPackwizModpack {
+      url = "https://github.com/Laskyyy/Create-Astral/blob/Astral-Experimental/pack.toml";
+    };
+  in
   {
     enable = true;
+    package = pkgs.fabricServers.fabric-1_18_2.override { loaderVersion = "0.14.9"; };
+    symlinks = {
+      "mods" = "${modpack}/mods";
+    };
   };
 
   hardware.graphics = {
