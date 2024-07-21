@@ -347,7 +347,7 @@
     };
   in
   {
-    services.minecraft-servers.servers.astralCreate = {
+    services.minecraft-server.servers.astralCreate = {
       enable = true;
     };
   };
