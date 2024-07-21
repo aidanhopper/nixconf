@@ -172,10 +172,15 @@
     #authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
   };
 
-  sunshine.enable = true;
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
+
   ssh.enable = true;
 
+  services.avahi.publish.enable = true;
+  services.avahi.publish.userServices = true;
+  services.sunshine.enable = true;
+  services.sunshine.autoStart = true;
+  services.sunshine.capSysAdmin = true;
 
   containers.caddy = {
     autoStart = true;
