@@ -340,17 +340,21 @@
     };
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers = {
-      pterodactyl = {
-        autoStart = true;
-        image = "ccarney16/pterodactyl-panel:latest";
+  services.minecraft-servers.modpack =
+  let
+    modpack = pkgs.fetchPackwizModpack {
+      url = "https://github.com/Laskyyy/Create-Astral/blob/Astral-Experimental/pack.toml";
+    };
+  in
+  {
+    services.minecraft-servers.servers.astralCreate = {
+      enable = true;
+      package = pkgs.fabricServers.fabric-1_18_2.override { loaderVersion = "0.14.9"; };
+      symlinks = {
+        "mods" = "${modpack}/mods";
       };
     };
   };
-
 
   hardware.graphics = {
     enable = true;
