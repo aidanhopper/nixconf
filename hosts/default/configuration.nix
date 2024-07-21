@@ -15,6 +15,7 @@
       ../../nixosModules
     ];
 
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
