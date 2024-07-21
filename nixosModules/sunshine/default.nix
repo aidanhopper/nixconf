@@ -12,7 +12,7 @@
     services.sunshine.autoStart = true;
     services.sunshine.capSysAdmin = true;
     services.sunshine.settings = {
-      file_apps = "/home/aidan/.config/sunshine/apps.json";
+      file_apps = lib.mkForce "/home/aidan/.config/sunshine/apps.json";
     };
     services.sunshine.applications.apps = with pkgs; [
       steam
