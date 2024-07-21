@@ -11,6 +11,7 @@
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
       inputs.sops-nix.nixosModules.sops
+      inputs.nix-minecraft.nixosModules.minecraft-servers
       ../../nixosModules
     ];
 
