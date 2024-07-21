@@ -340,8 +340,8 @@
     };
   };
 
-  virtualization.docker.enable = true;
-  config.virtualization.oci-containers = {
+  virtualisation.docker.enable = true;
+  virtualisation.oci-containers = {
     backend = "docker";
     containers = {
       pterodactyl = {
