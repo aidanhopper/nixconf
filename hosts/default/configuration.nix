@@ -22,6 +22,22 @@
   sops.secrets.tailscaleAuthKey = { };
   sops.secrets.tailscaleAPIKey = { };
   sops.secrets.vaultwardenMasterPassword = { };
+  sops.secrets.sshKey = { };
+
+  boot.kernelParams = [ "ip=dhcp" ];
+  boot.initrd = {
+    availableKernelModules = [ "r8169" ];
+    systemd.users.root.shell = "/bin/cryptsetup-askpass";
+    network = {
+      enable = true;
+      ssh = {
+        enable = true;
+        port = 22;
+        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElBiCeuhYeemvHxL3CTr5dqNX+rFVFRH0YWp3t4r4je aidanhop1@gmail.com" ];
+        hostKeys = [ config.sops.secrets.sshKey.path ];
+      };
+    };
+  }
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

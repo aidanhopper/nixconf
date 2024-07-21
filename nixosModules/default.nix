@@ -4,8 +4,8 @@
   imports = [
     ./xremap
     ./sunshine
-    ./ssh
     ./jellyfin
+    ./ssh
   ];
 }
 
