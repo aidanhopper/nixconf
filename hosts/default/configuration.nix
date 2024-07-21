@@ -45,7 +45,7 @@
     bridges.br0.interfaces = [ "enp3s0" ];
     useDHCP = false;
     interfaces."br0".useDHCP = true;
-    firewall.allowedTCPPorts = [ 80 443 ];
+    firewall.allowedTCPPorts = [ 80 443 8080 5657 ];
   };
 
   # Set your time zone.
