@@ -183,7 +183,7 @@
   services.sunshine.capSysAdmin = true;
   services.sunshine.applications = {
     env = {
-        PATH: "$(PATH):$(HOME)\/.local\/bin";
+        PATH = "$(PATH):$(HOME)\/.local\/bin";
     };
     apps = [
       {
