@@ -349,10 +349,6 @@
   {
     services.minecraft-servers.servers.astralCreate = {
       enable = true;
-      package = pkgs.fabricServers.fabric-1_18_2.override { loaderVersion = "0.14.9"; };
-      symlinks = {
-        "mods" = "${modpack}/mods";
-      };
     };
   };
 
