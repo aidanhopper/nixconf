@@ -72,11 +72,11 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager = {
-    defaultSession = "gnome-xorg";
-    autoLogin = {
-      enable = true;
-      user = "aidan";
-    };
+    defaultSession = "gnome";
+#    autoLogin = {
+#      enable = true;
+#      user = "aidan";
+#    };
   };
 
   services.xserver.videoDrivers = ["nvidia"];
