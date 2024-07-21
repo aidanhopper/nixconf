@@ -341,7 +341,7 @@
   };
 
   virtualization.docker.enable = true;
-  virtualization.oci-containers = {
+  config.virtualization.oci-containers = {
     backend = "docker";
     containers = {
       pterodactyl = {
