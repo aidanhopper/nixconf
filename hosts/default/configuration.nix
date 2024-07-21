@@ -181,6 +181,16 @@
   services.sunshine.enable = true;
   services.sunshine.autoStart = true;
   services.sunshine.capSysAdmin = true;
+  services.sunshine.applications = {
+    env = {
+        PATH: "$(PATH):$(HOME)\/.local\/bin";
+    };
+    apps = [
+      {
+          name: "Desktop",
+      }
+    ];
+  };
 
   containers.caddy = {
     autoStart = true;
