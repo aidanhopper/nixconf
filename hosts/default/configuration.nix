@@ -37,7 +37,7 @@
         hostKeys = [ config.sops.secrets.sshKey.path ];
       };
     };
-  }
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
