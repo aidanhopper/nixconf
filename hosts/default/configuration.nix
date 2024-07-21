@@ -34,7 +34,7 @@
         enable = true;
         port = 22;
         authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElBiCeuhYeemvHxL3CTr5dqNX+rFVFRH0YWp3t4r4je aidanhop1@gmail.com" ];
-        hostKeys = [ config.sops.secrets.sshKey.path ];
+        hostKeys = [ "/home/aidan/.ssh/id_ed25519" ];
       };
     };
   };
