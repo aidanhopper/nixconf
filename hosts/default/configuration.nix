@@ -70,9 +70,13 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.desktopManager.defaultSession = "gnome";
-  services.displayManager.autoLogin.user = "aidan";
-  services.displayManager.autoLogin.enable = true;
+  services.displayManager = {
+    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "aidan";
+    };
+  };
 
   services.xserver.videoDrivers = ["nvidia"];
 
