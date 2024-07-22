@@ -351,12 +351,13 @@
         "127.0.0.1:19132:19132/udp"
         "127.0.0.1:25500-25600:25500-25600"
       ];
+      workdir = "/var/lib/crafty";
       volumes = [
-        "/var/lib/docker/backups:/crafty/backups"
-        "/var/lib/docker/logs:/crafty/logs"
-        "/var/lib/docker/servers:/crafty/servers"
-        "/var/lib/docker/config:/crafty/config"
-        "/var/lib/docker/import:/crafty/import"
+        "./docker/backups:/crafty/backups"
+        "./docker/logs:/crafty/logs"
+        "./docker/servers:/crafty/servers"
+        "./docker/config:/crafty/config"
+        "./docker/import:/crafty/import"
       ];
       extraOptions = [
         "--add-host=host.docker.internal:host-gateway"
