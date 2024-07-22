@@ -351,7 +351,6 @@
         "127.0.0.1:19132:19132/udp"
         "127.0.0.1:25500-25600:25500-25600"
       ];
-      workdir = "/var/lib/crafty";
       volumes = [
         "./docker/backups:/crafty/backups"
         "./docker/logs:/crafty/logs"
