@@ -342,7 +342,17 @@
   virtualisation.oci-containers.containers.crafty = {
     image = "arcadiatechnology/crafty-4:latest";
     ports = [
-      "8080"
+      "8443:8443"
+      "8123:8123"
+      "19132:19132/udp"
+      "25500-25600:25500-25600"
+    ];
+    volumes = [
+      "/var/lib/crafty/backups:/crafty/backups"
+      "/var/lib/crafty/logs:/crafty/logs"
+      "/var/lib/crafty/servers:/crafty/servers"
+      "/var/lib/crafty/config:/crafty/config"
+      "/var/lib/crafty/import:/crafty/import"
     ];
   };
 
