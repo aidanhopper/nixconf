@@ -118,6 +118,7 @@
     description = "aidan";
     extraGroups = [ "docker" "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
+      docker-compose
       chromium
       xclip
       qbittorrent-nox
