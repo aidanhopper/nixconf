@@ -352,11 +352,11 @@
         "127.0.0.1:25500-25600:25500-25600"
       ];
       volumes = [
-        "/var/lib/crafty/backups:/crafty/backups"
-        "/var/lib/crafty/logs:/crafty/logs"
-        "/var/lib/crafty/servers:/crafty/servers"
-        "/var/lib/crafty/config:/crafty/config"
-        "/var/lib/crafty/import:/crafty/import"
+        "/var/lib/docker/backups:/crafty/backups"
+        "/var/lib/docker/logs:/crafty/logs"
+        "/var/lib/docker/servers:/crafty/servers"
+        "/var/lib/docker/config:/crafty/config"
+        "/var/lib/docker/import:/crafty/import"
       ];
       extraOptions = [
         "--add-host=host.docker.internal:host-gateway"
