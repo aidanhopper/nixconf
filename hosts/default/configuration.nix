@@ -354,6 +354,13 @@
       "/var/lib/crafty/config:/crafty/config"
       "/var/lib/crafty/import:/crafty/import"
     ];
+   networking.firewall = {
+        enable = true;
+        extraCommands = ''
+          iptables -I INPUT 1 -i docker0 -p tcp -d 172.17.0.1 -j ACCEPT
+          iptables -I INPUT 2 -i docker0 -p udp -d 172.17.0.1 -j ACCEPT
+        '';
+      };
   };
 
   hardware.graphics = {
