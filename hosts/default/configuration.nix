@@ -46,7 +46,7 @@
     interfaces."br0".useDHCP = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 8080 5657 ];
+      allowedTCPPorts = [ 80 443 8080 5657 25565 ];
     };
   };
 
