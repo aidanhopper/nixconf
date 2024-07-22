@@ -343,6 +343,7 @@
   };
 
   virtualisation.oci-containers = {
+    backend = "docker";
     containers.crafty = {
       image = "arcadiatechnology/crafty-4:latest";
       ports = [
