@@ -47,7 +47,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 80 443 8080 5657 25565 ];
-      allowedUDPPorts = [ 25565 ];
+      allowedUDPPorts = [ 80 443 25565 ];
     };
   };
 
@@ -204,49 +204,17 @@
     ];
   };
 
-  containers.caddy = {
-    autoStart = true;
-    privateNetwork = true;
-    hostBridge = "br0";
-    enableTun = true;
-    bindMounts."${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
-    config = { config, pkgs, lib, ... }: 
-    {
-      system.stateVersion = "unstable";
-      services.tailscale = {
-        enable = true;
-        useRoutingFeatures = "client";
-        authKeyFile = /run/secrets/tailscaleAuthKey;
-      };
-      systemd.services.resetTailscale = {
-        enable = true;
-        after = [ "network.target" ];
-        before = [ "tailscaled.service" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.curl}/bin/curl -X DELETE 'https://api.tailscale.com/api/v2/device/caddy";
-        };
-      };
-      services.caddy = {
-        enable = true;
-        virtualHosts."media.aidahop.xyz".extraConfig = ''
-          reverse_proxy http://192.168.1.30:8096
-        '';
-        virtualHosts."request.aidahop.xyz".extraConfig = ''
-          reverse_proxy http://192.168.1.1:5055
-        '';
-      };
-      networking = {
-        hostName = "caddy";
-        useDHCP = lib.mkForce true;
-        useHostResolvConf = lib.mkForce false;
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 443 80 ];
-          allowedUDPPorts = [ 443 80 ];
-        };
-      };
-    };
+  services.caddy = {
+    enable = true;
+    virtualHosts."media.aidahop.xyz".extraConfig = ''
+      reverse_proxy http://localhost:8096
+    '';
+    virtualHosts."request.aidahop.xyz".extraConfig = ''
+      reverse_proxy http://localhost:5055
+    '';
+    virtualHosts."mc.aidahop.xyz".extraConfig = ''
+      reverse_proxy http://localhost:25565
+    '';
   };
 
   containers.jellyfin = {
