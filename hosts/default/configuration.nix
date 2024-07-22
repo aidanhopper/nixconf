@@ -47,10 +47,6 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 80 443 8080 5657 ];
-      extraCommands = ''
-        iptables -I INPUT 1 -i docker0 -p tcp -d 172.17.0.1 -j ACCEPT
-        iptables -I INPUT 2 -i docker0 -p udp -d 172.17.0.1 -j ACCEPT
-      '';
     };
   };
 
@@ -346,21 +342,27 @@
     };
   };
 
-  virtualisation.oci-containers.containers.crafty = {
-    image = "arcadiatechnology/crafty-4:latest";
-    ports = [
-      "8443:8443"
-      "8123:8123"
-      "19132:19132/udp"
-      "25500-25600:25500-25600"
-    ];
-    volumes = [
-      "/var/lib/crafty/backups:/crafty/backups"
-      "/var/lib/crafty/logs:/crafty/logs"
-      "/var/lib/crafty/servers:/crafty/servers"
-      "/var/lib/crafty/config:/crafty/config"
-      "/var/lib/crafty/import:/crafty/import"
-    ];
+  virtualisation.oci-containers = {
+    containers.crafty = {
+      image = "arcadiatechnology/crafty-4:latest";
+      ports = [
+        "8443:8443"
+        "8123:8123"
+        "19132:19132/udp"
+        "25500-25600:25500-25600"
+      ];
+      volumes = [
+        "/var/lib/crafty/backups:/crafty/backups"
+        "/var/lib/crafty/logs:/crafty/logs"
+        "/var/lib/crafty/servers:/crafty/servers"
+        "/var/lib/crafty/config:/crafty/config"
+        "/var/lib/crafty/import:/crafty/import"
+      ];
+      extraOptions = [
+        "--add-host=host.docker.internal:host-gateway"
+        "--log-opt=tag='gitea'"
+      ];
+    };
   };
 
   hardware.graphics = {
