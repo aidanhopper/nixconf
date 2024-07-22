@@ -44,7 +44,14 @@
     bridges.br0.interfaces = [ "enp3s0" ];
     useDHCP = false;
     interfaces."br0".useDHCP = true;
-    firewall.allowedTCPPorts = [ 80 443 8080 5657 ];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 8080 5657 ];
+      extraCommands = ''
+        iptables -I INPUT 1 -i docker0 -p tcp -d 172.17.0.1 -j ACCEPT
+        iptables -I INPUT 2 -i docker0 -p udp -d 172.17.0.1 -j ACCEPT
+      '';
+    };
   };
 
   # Set your time zone.
@@ -354,13 +361,6 @@
       "/var/lib/crafty/config:/crafty/config"
       "/var/lib/crafty/import:/crafty/import"
     ];
-   networking.firewall = {
-        enable = true;
-        extraCommands = ''
-          iptables -I INPUT 1 -i docker0 -p tcp -d 172.17.0.1 -j ACCEPT
-          iptables -I INPUT 2 -i docker0 -p udp -d 172.17.0.1 -j ACCEPT
-        '';
-      };
   };
 
   hardware.graphics = {
