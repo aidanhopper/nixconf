@@ -332,29 +332,25 @@
 
   virtualisation.docker.enable = true;
 
-# virtualisation.oci-containers = {
-#   backend = "docker";
-#   containers.crafty = {
-#     image = "arcadiatechnology/crafty-4:latest";
-#     ports = [
-#       "127.0.0.1:8443:8443"
-#       "127.0.0.1:8123:8123"
-#       "127.0.0.1:19132:19132/udp"
-#       "127.0.0.1:25500-25600:25500-25600"
-#     ];
-#     volumes = [
-#       "./docker/backups:/crafty/backups"
-#       "./docker/logs:/crafty/logs"
-#       "./docker/servers:/crafty/servers"
-#       "./docker/config:/crafty/config"
-#       "./docker/import:/crafty/import"
-#     ];
-#     extraOptions = [
-#       "--add-host=host.docker.internal:host-gateway"
-#       "--log-opt=tag='gitea'"
-#     ];
-#   };
-# };
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.pterodactyl = {
+      image = "ghcr.io/pterodactyl/panel:latest";
+      ports = [
+        "127.0.0.1:8180:80"
+      ];
+      volumes = [
+        "/var/lib/pterodactyl/var/:/app/var/"
+        "/var/lib/pterodactyl/nginx/:/etc/nginx/http.d/"
+        "/var/lib/pterodactyl/certs/:/etc/letsencrypt/"
+        "/var/lib/pterodactyl/logs/:/app/storage/logs"
+      ];
+      extraOptions = [
+        "--add-host=host.docker.internal:host-gateway"
+        "--log-opt=tag='gitea'"
+      ];
+    };
+  };
 
   hardware.graphics = {
     enable = true;
