@@ -31,6 +31,7 @@
     rpcs3
     gnome-monitor-config
     runelite
+    lutris
   ];
 
   sway.enable = true;
