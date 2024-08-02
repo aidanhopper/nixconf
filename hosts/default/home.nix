@@ -30,6 +30,7 @@
     dolphin-emu
     rpcs3
     gnome-monitor-config
+    runelite
   ];
 
   sway.enable = true;
