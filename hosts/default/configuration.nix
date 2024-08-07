@@ -32,6 +32,11 @@
     "/crypto_keyfile.bin" = null;
   };
 
+  fileSystems."/mnt" = {
+    device = "10.0.0.119:/mnt/proxmox/media";
+    fsType = "nfs";
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
