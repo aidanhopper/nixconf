@@ -32,7 +32,7 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  fileSystems."/mnt" = {
+  fileSystems."/media" = {
     device = "10.0.0.119:/mnt/proxmox/media";
     fsType = "nfs";
   };
