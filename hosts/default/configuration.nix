@@ -70,7 +70,12 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  programs.sway.enable = true;
+  programs.sway = {
+    enable = true;
+    extraOptions = {
+      "--unsupported-gpu"
+    };
+  };
 
   services.xserver.displayManager = {
     defaultSession = "sway";
