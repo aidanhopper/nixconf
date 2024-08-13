@@ -32,6 +32,9 @@
     gnome-monitor-config
     runelite
     lutris
+    htop
+    nmap
+    dig
   ];
 
   sway.enable = true;
