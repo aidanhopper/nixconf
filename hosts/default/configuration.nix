@@ -32,11 +32,6 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  fileSystems."/media" = {
-    device = "10.0.0.119:/mnt/proxmox/media";
-    fsType = "nfs";
-  };
-
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -335,7 +330,7 @@
  #    };
  #  };
 
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
 
 # virtualisation.oci-containers = {
 #   backend = "docker";
