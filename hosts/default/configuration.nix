@@ -72,9 +72,9 @@
 
   programs.sway = {
     enable = true;
-    extraOptions = {
+    extraOptions = [
       "--unsupported-gpu"
-    };
+    ];
   };
 
   services.xserver.displayManager = {
