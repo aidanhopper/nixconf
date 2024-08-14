@@ -63,12 +63,19 @@
   };
 
   # Enable the X11 windowing system.
-
   services.xserver.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager = {
-    defaultSession = "plasma";
-    sddm.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver.displayManager = {
+    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "aidan";
+    };
   };
 
   services.xserver.videoDrivers = ["nvidia"];
