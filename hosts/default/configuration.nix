@@ -187,6 +187,7 @@
   services.avahi.publish.enable = true;
   services.avahi.publish.userServices = true;
   services.sunshine.enable = true;
+  services.sunshine.openFirewall = true;
   services.sunshine.autoStart = true;
   services.sunshine.capSysAdmin = true;
   services.sunshine.applications = {
