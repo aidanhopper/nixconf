@@ -35,6 +35,7 @@
     htop
     nmap
     dig
+    virt-manager
   ];
 
   sway.enable = true;
