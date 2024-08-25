@@ -36,6 +36,7 @@
     nmap
     dig
     virt-manager
+    virt-viewer
   ];
 
   sway.enable = true;
