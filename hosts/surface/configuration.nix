@@ -91,7 +91,7 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "qemu-libvirtd" ];
     packages = with pkgs; [
     ];
   };
@@ -109,6 +109,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+
   system.stateVersion = "23.11"; # Did you read the comment?
 
   # List services that you want to enable:
@@ -125,6 +126,22 @@
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fs];
+      };
+    };
   };
 
   services.udev.packages = with pkgs; [ via ];
