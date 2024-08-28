@@ -138,7 +138,7 @@
         packages = [(pkgs.OVMF.override {
           secureBoot = true;
           tpmSupport = true;
-        }).fs];
+        }).fd];
       };
     };
   };
