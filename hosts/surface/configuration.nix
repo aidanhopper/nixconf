@@ -143,6 +143,8 @@
     };
   };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   services.udev.packages = with pkgs; [ via ];
 
   hardware.keyboard.qmk.enable = true;
