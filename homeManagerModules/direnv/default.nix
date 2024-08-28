@@ -6,7 +6,7 @@ c-cpp
 c#
 cue
 empty
-go 
+go
 java
 latex
 nim

@@ -13,7 +13,7 @@
 
   home.packages = with pkgs; [
     discord
-    firefox
+    chromium
     steam
     spotify
     wl-clipboard
@@ -25,6 +25,18 @@
     cachix
     obs-studio
     prismlauncher
+    feishin
+    jellyfin-media-player
+    dolphin-emu
+    rpcs3
+    gnome-monitor-config
+    runelite
+    lutris
+    htop
+    nmap
+    dig
+    virt-manager
+    virt-viewer
   ];
 
   sway.enable = true;

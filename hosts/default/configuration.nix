@@ -1,8 +1,8 @@
-# Edit this configuration file to define what should be installed on
+#Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -10,8 +10,18 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
+
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
+
+  sops.secrets.tailscaleAuthKey = { };
+  sops.secrets.tailscaleAPIKey = { };
+  sops.secrets.vaultwardenMasterPassword = { };
+  sops.secrets.sshKey = { };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -22,7 +32,6 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -30,18 +39,15 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.policy = [
-    "magic"
-    "unicast"
-  ];
-
+  networking = {
+    hostName = "desktop"; # Define your hostname.
+    bridges.br0.interfaces = [ "enp3s0" ];
+    useDHCP = false;
+    interfaces."br0".useDHCP = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -61,32 +67,29 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-# services.greetd = {
-#   enable = true;
-#   settings = rec {
-#     initial_session = {
-#       command = "${pkgs.sway}/bin/sway";
-#       user = "aidan";
-#     };
-#     default_session = initial_session;
-#   };
-# };
-
+  services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver.displayManager = {
+    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "aidan";
+    };
+  };
 
   services.xserver.videoDrivers = ["nvidia"];
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -109,10 +112,13 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" "input" "video" "sound" "libvirtd" ];
+    extraGroups = [ "docker" "wheel" "input" "video" "sound" "libvirtd" "media" ];
     packages = with pkgs; [
-      firefox
+      docker-compose
+      chromium
       xclip
+      qbittorrent-nox
+      sops
     #  thunderbird
     ];
   };
@@ -123,8 +129,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -154,25 +158,198 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  system.stateVersion = "23.11"; # Did you read the comment?
 
   # List services that you want to enable:
 
+  users.groups.media = {
+    gid = 1800;
+    members = [
+      "aidan" 
+    ];
+  };
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   security.polkit.enable = true;
   xremap.gnome.enable = true;
-  services.tailscale.enable = true;
-  sunshine.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client"; # need this for mullvad to work
+    #authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
+  };
+
   services.sunshine.package = pkgs.sunshine.override {cudaSupport = true;};
+
   ssh.enable = true;
 
-  hardware.opengl = {
+  services.avahi.publish.enable = true;
+  services.avahi.publish.userServices = true;
+  services.sunshine.enable = true;
+  services.sunshine.openFirewall = true;
+  services.sunshine.autoStart = true;
+  services.sunshine.capSysAdmin = true;
+  services.sunshine.applications = {
+    env = {
+        PATH = "$(PATH):$(HOME)\/.local\/bin";
+    };
+    apps = [
+      {
+        name = "Desktop";
+      }
+    ];
+  };
+
+  virtualisation.libvirtd = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
+    };
+  };
+
+ #  services.caddy = {
+ #    enable = true;
+ #    virtualHosts."media.aidahop.xyz".extraConfig = ''
+ #      reverse_proxy http://localhost:8096
+ #    '';
+ #    virtualHosts."request.aidahop.xyz".extraConfig = ''
+ #      reverse_proxy http://localhost:5055
+ #    '';
+ #    virtualHosts."mc.aidahop.xyz".extraConfig = ''
+ #      reverse_proxy http://localhost:25565
+ #    '';
+ #  };
+
+ #  containers.jellyfin = {
+ #    autoStart = true;
+ #    privateNetwork = true;
+ #    hostBridge = "br0";
+ #    enableTun = true;
+ #    bindMounts = {
+ #      "/media" = {
+ #        hostPath = "/media";
+ #        isReadOnly = true;
+ #      };
+ #      "${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
+ #    };
+ #    config = { config, pkgs, lib, ... }: {
+ #      system.stateVersion = "unstable";
+ #      services.jellyfin.enable = true;
+ #      services.tailscale = {
+ #        enable = true;
+ #        useRoutingFeatures = "client";
+ #        authKeyFile = /run/secrets/tailscaleAuthKey;
+ #      };
+ #      networking = {
+ #        hostName = "jellyfin";
+ #        useDHCP = lib.mkForce true;
+ #        useHostResolvConf = lib.mkForce false;
+ #        firewall = {
+ #          enable = true;
+ #          allowedTCPPorts = [ 8096 ];
+ #        };
+ #      };
+ #    };
+ #  };
+
+ #  services.lidarr = {
+ #    enable = true;
+ #    group = "media";
+ #  };
+
+ #  services.sonarr = {
+ #    enable = true;
+ #    group = "media";
+ #  };
+
+ #  services.radarr = {
+ #    enable = true;
+ #    group = "media";
+ #  };
+
+ #  services.readarr = {
+ #    enable = true;
+ #    group = "media";
+ #  };
+
+ #  services.prowlarr.enable = true;
+ #  services.jellyseerr.enable = true;
+
+ #  containers.qbittorrent = {
+ #    autoStart = true;
+ #    privateNetwork = true;
+ #    hostBridge = "br0";
+ #    enableTun = true;
+ #    bindMounts = {
+ #      "/Downloads" = {
+ #        hostPath = "/Downloads";
+ #        isReadOnly = false;
+ #      };
+ #      "${config.sops.secrets.tailscaleAuthKey.path}".isReadOnly = true;
+ #    };
+ #    config = { config, pkgs, lib, ... }: {
+ #      services.tailscale = {
+ #        enable = true;
+ #        useRoutingFeatures = "client"; # need this for mullvad to work
+ #        authKeyFile = /run/secrets/tailscaleAuthKey;
+ #      };
+ #      systemd.services.qbittorrent = {
+ #        enable = true;
+ #        after = [ "network.target" ];
+ #        wantedBy = [ "multi-user.target" ];
+ #        serviceConfig = {
+ #          ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+ #          ExecStop = "pkill qbittorrent-nox";
+ #          Restart = "on-failure";
+ #        };
+ #      };
+ #      networking = {
+ #        hostName = "qbittorrent"; # Define your hostname.
+ #        useDHCP = lib.mkForce true;
+ #        useHostResolvConf = lib.mkForce false;
+ #        firewall = {
+ #          enable = true;
+ #          allowedTCPPorts = [ 8080 ];
+ #        };
+ #      };
+ #    };
+ #  };
+
+  #virtualisation.docker.enable = true;
+
+# virtualisation.oci-containers = {
+#   backend = "docker";
+#   containers.pterodactyl = {
+#     image = "ghcr.io/pterodactyl/panel:latest";
+#     ports = [
+#       "127.0.0.1:8180:80"
+#     ];
+#     volumes = [
+#       "/var/lib/pterodactyl/var/:/app/var/"
+#       "/var/lib/pterodactyl/nginx/:/etc/nginx/http.d/"
+#       "/var/lib/pterodactyl/certs/:/etc/letsencrypt/"
+#       "/var/lib/pterodactyl/logs/:/app/storage/logs"
+#     ];
+#     extraOptions = [
+#       "--add-host=host.docker.internal:host-gateway"
+#       "--log-opt=tag='gitea'"
+#     ];
+#   };
+# };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
   };
   
   hardware.nvidia = {
@@ -180,9 +357,10 @@
     powerManagement.enable = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
-
+  
+  hardware.keyboard.qmk.enable = true;
   
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -192,6 +370,12 @@
     useGlobalPkgs = true;
   };
 
+  services.udev.packages = [ pkgs.dolphinEmu ];
+
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
   nix.settings.trusted-users = ["root" "aidan"];
+
+  system.stateVersion = "unstable";
 
 }
