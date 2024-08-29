@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, programs, pkgs, ... }:
 
 {
 
@@ -7,6 +7,7 @@
   };
 
   config = lib.mkIf config.jetbrains.enable {
+
     # need this for dynamic linking
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
