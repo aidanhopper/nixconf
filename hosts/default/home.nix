@@ -37,8 +37,7 @@
     dig
     virt-manager
     virt-viewer
-    jetbrains.rider
-    msbuild
+    jetbrains-toolbox
   ];
 
   sway.enable = true;
