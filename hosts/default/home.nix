@@ -38,6 +38,7 @@
     virt-manager
     virt-viewer
     jetbrains.rider
+    mono
   ];
 
   sway.enable = true;
