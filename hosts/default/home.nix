@@ -37,6 +37,7 @@
     dig
     virt-manager
     virt-viewer
+    jetbrains.rider
   ];
 
   sway.enable = true;
