@@ -17,6 +17,7 @@
     spotify
     moonlight-qt
     virt-manager
+    jetbrains-toolbox
   ];
 
   home.stateVersion = "24.05";

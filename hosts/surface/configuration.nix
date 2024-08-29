@@ -55,8 +55,18 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver.displayManager = {
+    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "aidan";
+    };
+  };
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -121,6 +131,7 @@
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
   sunshine.enable = true;
+  jetbrains.enable = true;
 
   hardware.opengl = {
     enable = true;
