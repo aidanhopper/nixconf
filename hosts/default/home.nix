@@ -38,7 +38,6 @@
     virt-manager
     virt-viewer
     jetbrains.rider
-    mono
     msbuild
   ];
 
