@@ -6,6 +6,7 @@
     ./sunshine
     ./jellyfin
     ./ssh
+    ./jetbrains
   ];
 }
 

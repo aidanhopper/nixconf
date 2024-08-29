@@ -10,7 +10,6 @@
     ./direnv
     ./git
     ./nixconf
-    ./jetbrains
   ];
 
   options = {

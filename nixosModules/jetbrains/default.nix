@@ -1,4 +1,4 @@
-{ lib, config, programs, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
 
@@ -124,10 +124,6 @@
       xorg.xkeyboardconfig
       xz
       zlib
-    ];
-
-    home.packages = with pkgs; [
-      jetbrains-toolbox         
     ];
 
   };

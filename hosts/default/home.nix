@@ -7,7 +7,6 @@
   ];
 
   dev.enable = true;
-  jetbrains.enable = true;
 
   home.username = "aidan";
   home.homeDirectory = "/home/aidan";
@@ -38,6 +37,7 @@
     dig
     virt-manager
     virt-viewer
+    jetbrains-toolbox
   ];
 
 
