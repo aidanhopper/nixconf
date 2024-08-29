@@ -39,6 +39,7 @@
     virt-viewer
     jetbrains.rider
     mono
+    msbuild
   ];
 
   sway.enable = true;
