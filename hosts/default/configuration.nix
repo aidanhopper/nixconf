@@ -83,7 +83,7 @@
     desktopManager.gnome.enable = true;
     displayManager = {
       gdm.enable = true;
-      gdm.wayland = true;
+      #gdm.wayland = true;
       #defaultSession = "gnome";
       autoLogin = {
         enable = true;
