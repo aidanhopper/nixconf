@@ -63,18 +63,32 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+ #services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
+ #services.xserver.displayManager.gdm.enable = true;
+ #services.xserver.displayManager.gdm.wayland = true;
+ #services.xserver.desktopManager.gnome.enable = true;
 
-  services.displayManager = {
-    defaultSession = "gnome";
-    autoLogin = {
-      enable = true;
-      user = "aidan";
+ #services.displayManager = {
+ #  defaultSession = "gnome";
+ #  autoLogin = {
+ #    enable = true;
+ #    user = "aidan";
+ #  };
+ #};
+
+  services.xserver = {
+    enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      gdm.enable = true;
+      gdm.wayland = true;
+      defaultSession = "gnome";
+      autoLogin = {
+        enable = true;
+        user = "aidan";
+      };
     };
   };
 
