@@ -70,7 +70,7 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  services.displayManager = {
+  services.xserver.displayManager = {
     defaultSession = "gnome";
     autoLogin = {
       enable = true;
