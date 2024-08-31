@@ -46,11 +46,6 @@
     interfaces."br0".useDHCP = true;
   };
 
-  fileSystems."/mnt" = {
-    device = "192.168.254.1:/proxmox/backups";
-    fsType = "nfs";
-  };
-
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -66,9 +61,6 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
