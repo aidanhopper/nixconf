@@ -46,6 +46,11 @@
     interfaces."br0".useDHCP = true;
   };
 
+  filesystems."/mnt" = {
+    device = "192.168.254.1:/proxmox/backups";
+    nfs.server.enable = true;
+  };
+
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
