@@ -48,7 +48,7 @@
 
   fileSystems."/mnt" = {
     device = "192.168.254.1:/proxmox/backups";
-    nfs.server.enable = true;
+    fsType = "nfs";
   };
 
   # Set your time zone.
