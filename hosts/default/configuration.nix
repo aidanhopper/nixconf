@@ -46,7 +46,7 @@
     interfaces."br0".useDHCP = true;
   };
 
-  filesystems."/mnt" = {
+  fileSystems."/mnt" = {
     device = "192.168.254.1:/proxmox/backups";
     nfs.server.enable = true;
   };
