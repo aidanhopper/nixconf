@@ -6,31 +6,30 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
-      inputs.sops-nix.nixosModules.sops
+      #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
 
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
+ #sops.defaultSopsFile = ../../secrets/secrets.yaml;
+ #sops.defaultSopsFormat = "yaml";
+ #sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
-  sops.secrets.tailscaleAuthKey = { };
-  sops.secrets.tailscaleAPIKey = { };
-  sops.secrets.sshKey = { };
+ #sops.secrets.tailscaleAuthKey = { };
+ #sops.secrets.tailscaleAPIKey = { };
+ #sops.secrets.sshKey = { };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
+  #boot.loader.efi.canTouchEfiVariables = true;
+
 
   # Enable networking
   networking = {
     hostName = "desktop"; # Define your hostname.
-    bridges.br0.interfaces = [ "enp3s0" ];
+    bridges.br0.interfaces = [ "enp6s18" ];
     useDHCP = false;
     interfaces."br0".useDHCP = true;
   };
