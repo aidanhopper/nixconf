@@ -69,7 +69,7 @@
   services.xrdp.defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
   services.xrdp.openFirewall = true;
 
-  services.gnome-remote-desktop.enable = true;
+  services.gnome.gnome-remote-desktop.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
