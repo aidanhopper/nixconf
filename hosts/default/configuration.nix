@@ -64,6 +64,11 @@
     };
   };
 
+
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "gnomex11";
+  services.xrdp.openFirewall = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
