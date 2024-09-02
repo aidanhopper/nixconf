@@ -107,6 +107,7 @@
       chromium
       xclip
       sops
+      gnome-remote-desktop
     #  thunderbird
     ];
   };
