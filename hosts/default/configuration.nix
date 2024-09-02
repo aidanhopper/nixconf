@@ -66,6 +66,7 @@
 
   services.guacamole-server.enable = true;
   services.guacamole-client.enable = true;
+  services.guacamole-client.enableWebserver = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
