@@ -66,7 +66,7 @@
 
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "gnomex11";
+  services.xrdp.defaultWindowManager = "gnome";
   services.xrdp.openFirewall = true;
 
   # Configure keymap in X11
