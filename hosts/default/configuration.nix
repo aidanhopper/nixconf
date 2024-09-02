@@ -66,7 +66,7 @@
 
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
+  services.xrdp.defaultWindowManager = "gnome-session";
   services.xrdp.openFirewall = true;
 
   services.gnome.gnome-remote-desktop.enable = true;
