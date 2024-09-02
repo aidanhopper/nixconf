@@ -38,6 +38,7 @@
     virt-manager
     virt-viewer
     jetbrains-toolbox
+    parsec-bin
   ];
 
 
