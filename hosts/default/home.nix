@@ -38,7 +38,6 @@
     virt-manager
     virt-viewer
     jetbrains-toolbox
-    turbovnc
   ];
 
 
