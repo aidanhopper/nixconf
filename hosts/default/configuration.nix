@@ -280,7 +280,11 @@
         enable = true;
         autoEnableSources = true;
         settings = {
-          experimental = { ghost_text = true; };
+          performance = {
+            debounce = 60;
+            fetchingTimeout = 200;
+            maxViewEntries = 30;
+          };
             sources = [
             { name = "nvim_lsp"; }
             { name = "path"; }
@@ -291,6 +295,8 @@
             "<C-p>" = "cmp.mapping.select_prev_item()";
             "<C-e>" = "cmp.mapping.abort()";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<C-u>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-d>" = "cmp.mapping.scroll_docs(4)";
           };
         };
       };
