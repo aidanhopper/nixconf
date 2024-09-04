@@ -2,9 +2,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan. ./hardware-configuration.nix
+    [ # Include the results of the hardware scan. 
+      ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
-      inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default #inputs.sops-nix.nixosModules.sops
+      inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default 
+      #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
 #sops.defaultSopsFile = ../../secrets/secrets.yaml; sops.defaultSopsFormat = "yaml"; sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
