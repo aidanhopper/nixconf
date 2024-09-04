@@ -236,7 +236,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.catppuccin.enable = true;
+    colorschemes.nord.enable = true;
     opts = {
       number = true;
       relativenumber = true;
