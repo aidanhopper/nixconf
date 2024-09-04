@@ -250,6 +250,7 @@
       tabstop = 2;
       colorcolumn = "80";
       scrolloff = 8;
+      signcolumn = "yes";
       #wildmenu = true;
       #wildmode = "longest:list,full";
       #mapleader = " ";
