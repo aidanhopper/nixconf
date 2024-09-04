@@ -8,13 +8,24 @@
 
   config = lib.mkIf config.nvim.enable {
 
-    # basic config
-    programs.neovim = {
-      enable = true;
+    programs.nixvim = {
       viAlias = true;
       vimAlias = true;
-      defaultEditor = true;
+      colorschemes.catppuccin.enable = true;
+      opts = {
+        number = true;
+	relativenumber = true;
+	shiftwidth = true;
+      };
     };
+
+    # basic config
+   #programs.neovim = {
+   #  enable = true;
+   #  viAlias = true;
+   #  vimAlias = true;
+   #  defaultEditor = true;
+   #};
 
     # lua config
     #home.file.".config/nvim" = {
@@ -25,11 +36,11 @@
 
 
     # dependencies
-    home.packages = with pkgs; [
-      ripgrep
-      gcc
-      nodejs
-    ];
+   #home.packages = with pkgs; [
+   #  ripgrep
+   #  gcc
+   #  nodejs
+   #];
 
   };
 
