@@ -235,8 +235,8 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    colorscheme = "murphy";
     opts = {
-      colorscheme = "murphy";
       number = true;
       relativenumber = true;
       shiftwidth = 2;
