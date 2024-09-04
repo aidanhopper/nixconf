@@ -320,6 +320,14 @@
         key = "<leader>w";
       }
 
+      {
+        action = "<cmd>ZenMode<CR>";
+        key = "<leader>zz";
+        options = {
+          silent = true;
+        };
+      }
+
     ];
 
   };
