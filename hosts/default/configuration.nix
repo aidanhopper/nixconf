@@ -260,17 +260,23 @@
       telescope.enable = true;
       treesitter = {
         enable = true;
+        settings = {
+          auto_install = true;
+          highlight.enable = true;
+          indent.enable = ttrue;
+          incremental_selection = true;
+        };
       };
     };	
 
     keymaps = [
 
       {
-	action = "<cmd>Telescope find_files<CR>";
+        action = "<cmd>Telescope find_files<CR>";
         key = "<leader>pf";
         options = {
           silent = true;
-	};
+        };
       }
 
       {
