@@ -247,6 +247,9 @@
       #wildmode = "longest:list,full";
       #mapleader = " ";
     };
+    plugins = {
+      tmux-navigator.enable = true;
+    };
   };
 
   services.udev.packages = [ pkgs.dolphinEmu ];
