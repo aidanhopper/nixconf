@@ -233,8 +233,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.base16.enable = true;
-    #colorscheme = "murphy";
+    colorscheme = "murphy";
     globals.mapleader = " ";
 
     opts = {
