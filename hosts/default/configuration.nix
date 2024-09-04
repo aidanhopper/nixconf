@@ -267,7 +267,16 @@
           incremental_selection.enable = true;
         };
       };
-    };	
+      lsp = {
+        enable = true;
+        servers = {
+          clangd.enable = true;
+          hls.enable = true;
+          bashls.enable = true;
+          nixd.enable = true;
+        };
+      };
+    };
 
     keymaps = [
 
