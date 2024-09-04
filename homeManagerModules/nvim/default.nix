@@ -8,16 +8,6 @@
 
   config = lib.mkIf config.nvim.enable {
 
-    programs.nixvim = {
-      viAlias = true;
-      vimAlias = true;
-      colorschemes.catppuccin.enable = true;
-      opts = {
-        number = true;
-	relativenumber = true;
-	shiftwidth = true;
-      };
-    };
 
     # basic config
    #programs.neovim = {

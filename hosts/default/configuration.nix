@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default
+      inputs.nixvim.nixosModules.default
       #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
@@ -231,6 +232,17 @@
       "aidan" = import ./home.nix;
     };
     useGlobalPkgs = true;
+  };
+
+  programs.nixvim = {
+    viAlias = true;
+    vimAlias = true;
+    colorschemes.catppuccin.enable = true;
+    opts = {
+      number = true;
+      relativenumber = true;
+      shiftwidth = true;
+    };
   };
 
   services.udev.packages = [ pkgs.dolphinEmu ];
