@@ -301,6 +301,7 @@
         };
       };
       cmp-nvim-lsp.enable = true;
+      nvim-autopairs.enable = true;
     };
 
     keymaps = [
