@@ -235,6 +235,7 @@
     vimAlias = true;
     colorscheme = "murphy";
     globals.mapleader = " ";
+    globals.netrw_banner = false;
 
     opts = {
       number = true;
@@ -330,7 +331,7 @@
       }
       
       {
-        action = "<cmd>Telescope commits<CR>";
+        action = "<cmd>Telescope git_commits<CR>";
         key = "<leader>pc";
         options = {
           silent = true;
