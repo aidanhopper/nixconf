@@ -2,8 +2,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [ # Include the results of the hardware scan. ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
@@ -235,16 +234,18 @@
     viAlias = true;
     vimAlias = true;
     colorscheme = "murphy";
+    globals.mapleader = " ";
 
     opts = {
       number = true;
       swapfile = false;
       cursorline = true;
       cursorcolumn = true;
-      #clipboard = "unamedplus";
+      clipboard = "unnamedplus";
       relativenumber = true;
       shiftwidth = 2;
       colorcolumn = "80";
+      scrolloff = 8;
       #wildmenu = true;
       #wildmode = "longest:list,full";
       #mapleader = " ";
