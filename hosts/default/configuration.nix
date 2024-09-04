@@ -243,7 +243,7 @@
       cursorcolumn = true;
       clipboard = "unamedplus";
       relativenumber = true;
-      width = 2;
+      shiftwidth = 2;
       colorcolumn = 80;
       wildmenu = true;
       wildmode = "longest:list,full";
