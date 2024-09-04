@@ -230,10 +230,12 @@
   };
 
   programs.nixvim = {
+
     enable = true;
     viAlias = true;
     vimAlias = true;
     colorscheme = "murphy";
+
     opts = {
       number = true;
       swapfile = false;
@@ -247,9 +249,24 @@
       #wildmode = "longest:list,full";
       #mapleader = " ";
     };
+
     plugins = {
       tmux-navigator.enable = true;
+      telescope.enable = true;
     };
+
+    keymaps = [
+
+      {
+	action = "<cmd>Telescope<CR>";
+	key = "<leader>pf";
+	options = {
+	  silent = true;
+	};
+      }
+
+    ];
+
   };
 
   services.udev.packages = [ pkgs.dolphinEmu ];
