@@ -1,9 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan. 
-      ./hardware-configuration.nix
+  imports = [ # Include the results of the hardware scan. ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default 
       #inputs.sops-nix.nixosModules.sops
@@ -276,6 +274,14 @@
           bashls.enable = true;
           nixd.enable = true;
         };
+      };
+      cmp = {
+        autoEnableSources = true;
+        settings.sources = [
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
+        ];
       };
     };
 
