@@ -283,7 +283,7 @@
           performance = {
             debounce = 60;
             fetchingTimeout = 200;
-            maxViewEntries = 30;
+            maxViewEntries = 15;
           };
             sources = [
             { name = "nvim_lsp"; }
