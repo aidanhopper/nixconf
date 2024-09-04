@@ -245,8 +245,8 @@
       relativenumber = true;
       shiftwidth = 2;
       colorcolumn = 80;
-      wildmenu = true;
-      wildmode = "longest:list,full";
+      #wildmenu = true;
+      #wildmode = "longest:list,full";
       mapleader = " ";
     };
   };
