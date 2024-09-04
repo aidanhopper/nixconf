@@ -235,8 +235,8 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.base16.google-dark.enable = true;
     opts = {
+      colorscheme = "murphy";
       number = true;
       relativenumber = true;
       shiftwidth = 2;
