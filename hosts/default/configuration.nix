@@ -360,6 +360,14 @@
         };
       }
 
+      {
+        action = "<cmd>Trouble diagnostics<CR>";
+        key = "<leader>pd";
+        options = {
+          silent = true;
+        };
+      }
+
     ];
 
   };
