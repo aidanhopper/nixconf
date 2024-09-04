@@ -261,11 +261,16 @@
     keymaps = [
 
       {
-	action = "<cmd>Telescope<CR>";
+	action = "<cmd>Telescope find_files<CR>";
 	key = "<leader>pf";
 	options = {
 	  silent = true;
 	};
+      }
+
+      {
+	action = "<cmd>w<CR>";
+	key = "<leader>w";
       }
 
     ];
