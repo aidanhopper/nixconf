@@ -318,6 +318,22 @@
           silent = true;
         };
       }
+      
+      {
+        action = "<cmd>Telescope commits<CR>";
+        key = "<leader>pc";
+        options = {
+          silent = true;
+        };
+      }
+
+      {
+        action = "<cmd>Telescope live_grep<CR>";
+        key = "<leader>pg";
+        options = {
+          silent = true;
+        };
+      }
 
       {
         action = "<cmd>w<CR>";
