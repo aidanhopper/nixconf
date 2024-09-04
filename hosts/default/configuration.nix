@@ -240,7 +240,7 @@
     opts = {
       number = true;
       relativenumber = true;
-      shiftwidth = true;
+      shiftwidth = 2;
     };
   };
 
