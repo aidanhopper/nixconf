@@ -307,7 +307,14 @@
         };
       };
       undotree.enable = true;
-      illuminate.enable = true;
+      illuminate = { 
+        enable = true; 
+        providers = [
+          "lsp"
+          "treesitter"
+          "regex"
+        ];
+      };
       trouble.enable = true;
       todo-comments.enable = true;
     };
