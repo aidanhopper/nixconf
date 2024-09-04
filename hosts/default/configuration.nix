@@ -302,7 +302,12 @@
       };
       cmp-nvim-lsp.enable = true;
       nvim-autopairs.enable = true;
-      zen-mode.enable = true;
+      zen-mode = {
+        enable = true;
+        settings = {
+          width = 80;
+        };
+      };
     };
 
     keymaps = [
