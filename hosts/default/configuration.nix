@@ -271,7 +271,6 @@
         enable = true;
         servers = {
           clangd.enable = true;
-          hls.enable = true;
           bashls.enable = true;
           nixd.enable = true;
         };
@@ -328,6 +327,14 @@
       {
         action = "<cmd>ZenMode<CR>";
         key = "<leader>zz";
+        options = {
+          silent = true;
+        };
+      }
+
+      {
+        action = "<cmd>Ex<CR>";
+        key = "<leader>pv";
         options = {
           silent = true;
         };
