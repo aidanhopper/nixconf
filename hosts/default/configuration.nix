@@ -238,6 +238,9 @@
     colorscheme = "murphy";
     opts = {
       number = true;
+      swapfile = false;
+      cursorline = true;
+      cursorcolumn = true;
       relativenumber = true;
       shiftwidth = 2;
     };
