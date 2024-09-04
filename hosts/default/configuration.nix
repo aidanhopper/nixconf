@@ -247,7 +247,7 @@
       colorcolumn = 80;
       #wildmenu = true;
       #wildmode = "longest:list,full";
-      mapleader = " ";
+      #mapleader = " ";
     };
   };
 
