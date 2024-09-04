@@ -235,7 +235,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.vim-256noir.enable = true;
+    colorschemes.murphy.enable = true;
     opts = {
       number = true;
       relativenumber = true;
