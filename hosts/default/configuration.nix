@@ -235,7 +235,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.murphy.enable = true;
+    colorschemes.base16.google-dark.enable = true;
     opts = {
       number = true;
       relativenumber = true;
