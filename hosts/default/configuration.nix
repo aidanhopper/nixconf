@@ -277,6 +277,7 @@
         };
       };
       cmp = {
+        enable = true;
         autoEnableSources = true;
         settings.sources = [
           { name = "nvim_lsp"; }
@@ -312,5 +313,4 @@
   nix.settings.trusted-users = ["root" "aidan"];
 
   system.stateVersion = "unstable";
-
 }
