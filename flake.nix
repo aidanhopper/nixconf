@@ -16,6 +16,11 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
+    nixvim = {
+        url = "github:nix-community/nixvim";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 

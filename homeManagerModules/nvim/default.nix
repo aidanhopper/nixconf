@@ -17,10 +17,12 @@
     };
 
     # lua config
-    home.file.".config/nvim" = {
-      source = ./config;
-      recursive = true;
-    };
+    #home.file.".config/nvim" = {
+    #  source = ./config;
+    #  recursive = true;
+    #};
+    
+
 
     # dependencies
     home.packages = with pkgs; [
