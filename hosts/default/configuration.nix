@@ -245,6 +245,7 @@
       cursorcolumn = true;
       clipboard = "unnamedplus";
       relativenumber = true;
+      expandtab = true;
       shiftwidth = 2;
       colorcolumn = "80";
       scrolloff = 8;
@@ -256,22 +257,24 @@
     plugins = {
       tmux-navigator.enable = true;
       telescope.enable = true;
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+      };
     };	
 
     keymaps = [
 
       {
 	action = "<cmd>Telescope find_files<CR>";
-	key = "<leader>pf";
-	options = {
-	  silent = true;
+        key = "<leader>pf";
+        options = {
+          silent = true;
 	};
       }
 
       {
-	action = "<cmd>w<CR>";
-	key = "<leader>w";
+        action = "<cmd>w<CR>";
+        key = "<leader>w";
       }
 
     ];
