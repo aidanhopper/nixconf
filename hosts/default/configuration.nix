@@ -263,7 +263,7 @@
         settings = {
           auto_install = true;
           highlight.enable = true;
-          indent.enable = ttrue;
+          indent.enable = true;
           incremental_selection = true;
         };
       };
