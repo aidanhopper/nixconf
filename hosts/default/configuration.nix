@@ -248,7 +248,6 @@
       expandtab = true;
       shiftwidth = 2;
       tabstop = 2;
-      netrw_banner = 0;
       colorcolumn = "80";
       scrolloff = 8;
       #wildmenu = true;
