@@ -18,6 +18,7 @@
     moonlight-qt
     virt-manager
     jetbrains-toolbox
+    zathura
   ];
 
   home.stateVersion = "24.05";
