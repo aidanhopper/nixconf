@@ -9,8 +9,7 @@
       ../../nixosModules
     ];
 
- #sops.defaultSopsFile = ../../secrets/secrets.yaml;
- #sops.defaultSopsFormat = "yaml";
+ #sops.defaultSopsFile = ../../secrets/secrets.yaml; sops.defaultSopsFormat = "yaml";
  #sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
  #sops.secrets.tailscaleAuthKey = { };
@@ -236,7 +235,7 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
-    colorschemes.vscode.enable = true;
+    colorschemes.vim-256noir.enable = true;
     opts = {
       number = true;
       relativenumber = true;
