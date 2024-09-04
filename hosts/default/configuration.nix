@@ -307,6 +307,10 @@
           width = 80;
         };
       };
+      undotree.enable = true;
+      illuminate.enable = true;
+      trouble.enable = true;
+      todo-comments.enable = true;
     };
 
     keymaps = [
