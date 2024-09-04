@@ -5,9 +5,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
-      inputs.xremap-flake.nixosModules.default
-      inputs.nixvim.nixosModules.default
-      #inputs.sops-nix.nixosModules.sops
+      inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
 
@@ -235,6 +233,7 @@
   };
 
   programs.nixvim = {
+    enable = true;
     viAlias = true;
     vimAlias = true;
     colorschemes.catppuccin.enable = true;
