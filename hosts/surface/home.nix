@@ -16,7 +16,6 @@
     steam
     spotify
     moonlight-qt
-    virt-manager
     jetbrains-toolbox
     zathura
   ];

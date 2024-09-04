@@ -100,7 +100,7 @@
   users.users.aidan = {
     isNormalUser = true;
     description = "aidan";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "qemu-libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
   };
@@ -136,22 +136,6 @@
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
-  };
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
-    };
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
