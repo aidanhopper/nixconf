@@ -8,9 +8,7 @@
       inputs.xremap-flake.nixosModules.default inputs.nixvim.nixosModules.default #inputs.sops-nix.nixosModules.sops
       ../../nixosModules
     ];
-
- #sops.defaultSopsFile = ../../secrets/secrets.yaml; sops.defaultSopsFormat = "yaml";
- #sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
+#sops.defaultSopsFile = ../../secrets/secrets.yaml; sops.defaultSopsFormat = "yaml"; sops.age.keyFile = "/home/aidan/.config/sops/age/keys.txt";
 
  #sops.secrets.tailscaleAuthKey = { };
  #sops.secrets.tailscaleAPIKey = { };
@@ -241,7 +239,7 @@
       swapfile = false;
       cursorline = true;
       cursorcolumn = true;
-      clipboard = "unamedplus";
+      #clipboard = "unamedplus";
       relativenumber = true;
       shiftwidth = 2;
       colorcolumn = "80";
