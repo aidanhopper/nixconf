@@ -241,8 +241,13 @@
       swapfile = false;
       cursorline = true;
       cursorcolumn = true;
+      clipboard = "unamedplus";
       relativenumber = true;
-      shiftwidth = 2;
+      width = 2;
+      colorcolumn = 80;
+      wildmenu = true;
+      wildmode = "longest:list,full";
+      mapleader = " ";
     };
   };
 
