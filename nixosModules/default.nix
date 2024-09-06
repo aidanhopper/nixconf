@@ -4,7 +4,7 @@
   imports = [
     ./xremap
     ./sunshine
-    ./jellyfin
+    ./nvim
     ./ssh
     ./jetbrains
   ];
