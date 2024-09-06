@@ -12,12 +12,13 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
-      #colorscheme = "murphy";
       colorschemes.onedark.enable = true;
 
       globals = {
         mapleader = " ";
         netrw_banner = false;
+        netrw_keepdir = 0;
+        netrw_winsize = 30;
         wildmenu = true;
         wildmode = "longest:list,full";
       };
