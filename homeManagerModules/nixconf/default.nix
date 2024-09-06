@@ -18,7 +18,7 @@ in
   };
 
   config = lib.mkIf config.tmux.enable {
-    home.packages = with pkgs; [
+    home.packages = [
       nixconf
     ];
 

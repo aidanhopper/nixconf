@@ -108,6 +108,7 @@
         };
         trouble.enable = true;
         todo-comments.enable = true;
+        lazygit.enable = true;
       };
 
       keymaps = [
