@@ -10,7 +10,7 @@
     programs.kitty = {
       enable = true;
       settings = {
-        hide_window_decorations = true;
+        hide_window_decorations = false;
         enable_audio_bell = false;
       };
     };
