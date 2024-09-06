@@ -13,7 +13,7 @@
         hide_window_decorations = true;
         enable_audio_bell = false;
       };
-      theme = "GitHub_Dark";
+      theme = "VSCode_Dark";
     };
   };
 
