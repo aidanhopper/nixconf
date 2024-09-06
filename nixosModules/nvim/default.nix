@@ -12,7 +12,8 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
-      colorscheme = "murphy";
+      #colorscheme = "murphy";
+      colorschemes.vscode.enable = true;
 
       globals = {
         mapleader = " ";
