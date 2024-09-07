@@ -17,10 +17,6 @@
       globals = {
         mapleader = " ";
         netrw_banner = false;
-        netrw_keepdir = 0;
-        netrw_winsize = 25;
-        netrw_browse_split = 4;
-        netrw_altv = 1;
         wildmenu = true;
         wildmode = "longest:list,full";
       };
