@@ -12,7 +12,7 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
-      colorschemes.onedark.enable = true;
+      colorschemes.one.enable = true;
 
       globals = {
         mapleader = " ";
