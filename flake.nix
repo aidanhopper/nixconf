@@ -48,7 +48,7 @@
           modules = [
             ./hosts/surface/configuration.nix 
             inputs.home-manager.nixosModules.default
-            inputs.nixos-hardware.nixosMOdules.microsoft-surface-pro-intel
+            inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
           ];
         };
 	
