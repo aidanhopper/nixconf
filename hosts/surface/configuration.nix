@@ -114,7 +114,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    via
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -131,7 +130,6 @@
   security.polkit.enable = true;
   xremap.gnome.enable = true;
   services.tailscale.enable = true;
-  sunshine.enable = true;
   jetbrains.enable = true;
 
   hardware.opengl = {
