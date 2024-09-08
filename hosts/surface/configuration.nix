@@ -138,6 +138,7 @@
     driSupport32Bit = true;
   };
 
+  nvim.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services.udev.packages = with pkgs; [ via ];
