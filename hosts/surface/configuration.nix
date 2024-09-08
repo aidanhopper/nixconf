@@ -144,8 +144,6 @@
 
   services.udev.packages = with pkgs; [ via ];
 
-  hardware.keyboard.qmk.enable = true;
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {

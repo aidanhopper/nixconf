@@ -13,8 +13,6 @@
 
   home.packages = with pkgs; [
     firefox
-    steam
-    spotify
     moonlight-qt
     jetbrains-toolbox
     zathura
