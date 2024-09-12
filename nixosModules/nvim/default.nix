@@ -19,7 +19,7 @@
         netrw_banner = false;
         wildmenu = true;
         wildmode = "longest:list,full";
-        netrw_winsize = 0.25;
+        netrw_winsize = 25;
       };
 
       opts = {
