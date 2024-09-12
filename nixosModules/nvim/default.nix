@@ -154,6 +154,14 @@
 
         {
           action = "<cmd>NvimTreeToggle<CR>";
+          key = "<leader>po";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>NvimTreeFocus<CR>";
           key = "<leader>pv";
           options = {
             silent = true;
