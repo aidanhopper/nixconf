@@ -19,6 +19,7 @@
         netrw_banner = false;
         wildmenu = true;
         wildmode = "longest:list,full";
+        netrw_winsize = 0.25;
       };
 
       opts = {
@@ -149,7 +150,7 @@
         }
 
         {
-          action = "<cmd>Ex<CR>";
+          action = "<cmd>Lexplore<CR>";
           key = "<leader>pv";
           options = {
             silent = true;
