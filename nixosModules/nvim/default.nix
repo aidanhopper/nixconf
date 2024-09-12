@@ -108,7 +108,10 @@
         };
         trouble.enable = true;
         todo-comments.enable = true;
-        nvim-tree.enable = true;
+        nvim-tree = {
+          enable = true;
+          git.enable = true;
+        };
       };
 
       keymaps = [
@@ -150,7 +153,7 @@
         }
 
         {
-          action = "<cmd>Ex<CR>";
+          action = "<cmd>NvimTreeToggle<CR>";
           key = "<leader>pv";
           options = {
             silent = true;
