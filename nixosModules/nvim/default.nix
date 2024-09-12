@@ -108,7 +108,7 @@
         };
         trouble.enable = true;
         todo-comments.enable = true;
-        nvimtree.enable = true;
+        nvim-tree.enable = true;
       };
 
       keymaps = [
