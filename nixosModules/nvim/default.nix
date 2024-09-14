@@ -56,6 +56,7 @@
             clangd.enable = true;
             bashls.enable = true;
             nixd.enable = true;
+            pylsp.enable = true;
           };
           keymaps = {
             lspBuf = {
