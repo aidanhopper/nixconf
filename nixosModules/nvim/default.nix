@@ -173,6 +173,14 @@
             silent = true;
           };
         }
+
+        {
+          action = "vim.lsp.buf.format";
+          key = "<leader>f";
+          options = {
+            silent = true;
+          };
+        }
       ];
     };
 
