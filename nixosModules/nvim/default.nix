@@ -98,7 +98,6 @@
             };
           };
         };
-        lsp-format.enable = true;
         cmp-nvim-lsp.enable = true;
         nvim-autopairs.enable = true;
         zen-mode = {
