@@ -181,6 +181,14 @@
             silent = true;
           };
         }
+
+        {
+          action = "<cmd>Neogen<CR>";
+          key = "<leader>d";
+          options = {
+            silent = true;
+          };
+        }
       ];
     };
 
