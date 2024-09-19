@@ -36,6 +36,11 @@
         colorcolumn = "80";
         scrolloff = 8;
         signcolumn = "yes";
+        hlsearch = false;
+        showmatch = true;
+        smartindent = true;
+        incsearch = true;
+        updatetime = 50;
       };
 
       plugins = {
@@ -93,6 +98,7 @@
             };
           };
         };
+        lsp-format.enable = true;
         cmp-nvim-lsp.enable = true;
         nvim-autopairs.enable = true;
         zen-mode = {
@@ -112,6 +118,7 @@
         };
         trouble.enable = true;
         todo-comments.enable = true;
+        neogen.enable = true;
       };
 
       keymaps = [
