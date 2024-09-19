@@ -175,7 +175,7 @@
         }
 
         {
-          action = "vim.lsp.buf.format";
+          action = "<cmd>lua vim.lsp.buf.format()<CR>";
           key = "<leader>f";
           options = {
             silent = true;
