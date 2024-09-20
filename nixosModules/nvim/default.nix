@@ -117,7 +117,16 @@
         };
         trouble.enable = true;
         todo-comments.enable = true;
-        neogen.enable = true;
+        neogen = {
+          enable = true;
+          languages = {
+            cpp = {
+              template = {
+                annotation_convention = "doxygen";
+              };
+            };
+          };
+        };
         which-key = {
           enable = true;
           settings.delay = 500;
