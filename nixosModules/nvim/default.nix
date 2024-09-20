@@ -118,6 +118,7 @@
         trouble.enable = true;
         todo-comments.enable = true;
         neogen.enable = true;
+        whichkey.enable = true;
       };
 
       keymaps = [
@@ -128,7 +129,7 @@
             silent = true;
           };
         }
-        
+
         {
           action = "<cmd>Telescope git_commits<CR>";
           key = "<leader>pc";
@@ -184,7 +185,39 @@
 
         {
           action = "<cmd>Neogen<CR>";
-          key = "<leader>d";
+          key = "<leader>vdd";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>Neogen func<CR>";
+          key = "<leader>vdf";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>Neogen type<CR>";
+          key = "<leader>vdt";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>Neogen file<CR>";
+          key = "<leader>vdf";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>Neogen class<CR>";
+          key = "<leader>vdc";
           options = {
             silent = true;
           };
