@@ -118,7 +118,7 @@
         trouble.enable = true;
         todo-comments.enable = true;
         neogen.enable = true;
-        whichkey.enable = true;
+        which-key.enable = true;
       };
 
       keymaps = [
