@@ -212,7 +212,7 @@
 
         {
           action = "<cmd>Neogen file<CR>";
-          key = "<leader>vdf";
+          key = "<leader>vdn";
           options = {
             silent = true;
           };
