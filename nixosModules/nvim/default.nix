@@ -74,6 +74,7 @@
             };
           };
         };
+        lspsaga.enable = true;
         cmp = {
           enable = true;
           autoEnableSources = true;
@@ -230,6 +231,14 @@
         {
           action = "<cmd>Neogen class<CR>";
           key = "<leader>vdc";
+          options = {
+            silent = true;
+          };
+        }
+
+        {
+          action = "<cmd>Lspsaga hover_doc<CR>";
+          key = "K";
           options = {
             silent = true;
           };
