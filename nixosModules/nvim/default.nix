@@ -120,7 +120,7 @@
         neogen.enable = true;
         which-key = {
           enable = true;
-          delay = 500;
+          settings.delay = 500;
         };
       };
 
