@@ -74,7 +74,6 @@
             };
           };
         };
-        lspsaga.enable = true;
         cmp = {
           enable = true;
           autoEnableSources = true;
@@ -241,6 +240,7 @@
           key = "K";
           options = {
             silent = true;
+            noremap = true;
           };
         }
       ];
