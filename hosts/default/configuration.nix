@@ -189,7 +189,7 @@
     };
     settings = {
       channels = 3;
-      sunshine_name = "nixos"
+      sunshine_name = "nixos";
     };
   };
 
