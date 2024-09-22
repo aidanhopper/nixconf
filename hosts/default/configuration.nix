@@ -172,19 +172,24 @@
 
   services.avahi.publish.enable = true;
   services.avahi.publish.userServices = true;
-  services.sunshine.enable = true;
-  services.sunshine.openFirewall = true;
-  services.sunshine.autoStart = true;
-  services.sunshine.capSysAdmin = true;
-  services.sunshine.applications = {
-    env = {
-        PATH = "$(PATH):$(HOME)\/.local\/bin";
+  services.sunshine = {
+    enable = true;
+    openFirewall = true;
+    autoStart = true;
+    capSysAdmin = true;
+    applications = {
+      env = {
+          PATH = "$(PATH):$(HOME)\/.local\/bin";
+      };
+      apps = [
+        {
+          name = "Desktop";
+        }
+      ];
     };
-    apps = [
-      {
-        name = "Desktop";
-      }
-    ];
+    settings = {
+      channels = 2;
+    };
   };
 
   virtualisation.libvirtd = {
