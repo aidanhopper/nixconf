@@ -188,8 +188,7 @@
       ];
     };
     settings = {
-      channels = 4;
-      asdf = 1;
+      channels = 3;
     };
   };
 
