@@ -243,6 +243,15 @@
             noremap = true;
           };
         }
+
+        {
+          action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+          key = "<leader>vca";
+          options = {
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
     };
 
