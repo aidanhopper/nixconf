@@ -21,7 +21,6 @@
 
   #boot.loader.efi.canTouchEfiVariables = true;
 
-
   networking = {
     hostName = "desktop"; # Define your hostname.
     bridges.br0.interfaces = [ "enp6s18" ];
