@@ -236,15 +236,6 @@
         }
 
         {
-          action = "<cmd>Lspsaga hover_doc<CR>";
-          key = "K";
-          options = {
-            silent = true;
-            noremap = true;
-          };
-        }
-
-        {
           action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
           key = "<leader>vca";
           options = {
