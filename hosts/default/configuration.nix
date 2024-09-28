@@ -211,8 +211,8 @@
   services.syncthing = {
     enable = true;
     user = "aidan";
-    overrideDevices = true;
-    overrideFolders = true;
+    dataDir = "/home/aidan/Documents";
+    configDir = "/home/aidan/.config/syncthing";
   };
 
   jetbrains.enable = true;
