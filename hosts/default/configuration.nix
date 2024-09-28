@@ -213,7 +213,17 @@
     user = "aidan";
     dataDir = "/home/aidan/Documents";
     configDir = "/home/aidan/.config/syncthing";
+    overrideFolders = true;
+    settings = {
+      folders = {
+        "Notes" = {
+          path = "/home/aidan/Notes";
+        };
+      };
+    };
   };
+
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
 
   jetbrains.enable = true;
 
