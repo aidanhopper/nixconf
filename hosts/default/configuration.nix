@@ -211,6 +211,8 @@
   services.syncthing = {
     enable = true;
     user = "aidan";
+    overrideDevices = true;
+    overrideFolders = true;
   };
 
   jetbrains.enable = true;
