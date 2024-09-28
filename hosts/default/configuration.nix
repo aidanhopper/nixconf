@@ -210,7 +210,6 @@
 
   services.syncthing = {
     enable = true;
-    folders.path = "/home/aidan/Notes";
   };
 
   jetbrains.enable = true;
