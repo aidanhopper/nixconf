@@ -210,6 +210,7 @@
 
   services.syncthing = {
     enable = true;
+    user = "aidan";
   };
 
   jetbrains.enable = true;
