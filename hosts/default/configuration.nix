@@ -211,11 +211,6 @@
   services.syncthing = {
     enable = true;
     dataDir = "/home/aidan/Notes";
-    configDir = "/home/aidan/.config/syncthing";
-    settings.gui = {
-      username = "aidan";
-      password = "changeme";
-    };
   };
 
   jetbrains.enable = true;
