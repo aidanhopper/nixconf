@@ -208,6 +208,15 @@
     };
   };
 
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/aidan/Notes";
+    settings.gui = {
+      username = "aidan";
+      password = "changeme";
+    };
+  };
+
   jetbrains.enable = true;
 
   hardware.graphics = {
