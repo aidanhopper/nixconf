@@ -210,7 +210,7 @@
 
   services.syncthing = {
     enable = true;
-    dataDir = "/home/aidan/Notes";
+    folders.path = "/home/aidan/Notes";
   };
 
   jetbrains.enable = true;
