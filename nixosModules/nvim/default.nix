@@ -63,6 +63,8 @@
             nixd.enable = true;
             pylsp.enable = true;
             hls.enable = true;
+            html.enable = true;
+            cssls.enable = true;
           };
           keymaps = {
             lspBuf = {
