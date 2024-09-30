@@ -214,7 +214,12 @@
     dataDir = "/home/aidan/Documents";
     configDir = "/home/aidan/.config/syncthing";
     overrideFolders = true;
+    overrideDevices = true;
     settings = {
+      devices = {
+        "tablet" = { id = "XAPOSJA-CBIKN7C-RE6KWMP-QCCSFY5-TLEXV6U-VNZPUHU-YDIWMEJ-QATSWQZ"; };
+        "phone" = { id = "T6FN7MD-KMONNOG-RMBPOVG-EKWL56W-SQ3CYKY-3RDIRJI-B7I6RWN-66J7GQI"; };
+      };
       folders = {
         "Notes" = {
           path = "/home/aidan/Notes";
