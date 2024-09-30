@@ -23,7 +23,7 @@
 
   networking = {
     hostName = "desktop"; # Define your hostname.
-    bridges.br0.interfaces = [ "enp6s18" ];
+    bridges.br0.interfaces = [ "ens18" ];
     useDHCP = false;
     interfaces."br0".useDHCP = true;
   };
