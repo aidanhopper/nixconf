@@ -223,6 +223,7 @@
       folders = {
         "Notes" = {
           path = "/home/aidan/Notes";
+          devices = [ "tablet" "phone" ];
         };
       };
     };
