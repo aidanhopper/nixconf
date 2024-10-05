@@ -40,6 +40,7 @@
     jetbrains-toolbox
     parsec-bin
     vagrant
+    r2modman
   ];
 
 
