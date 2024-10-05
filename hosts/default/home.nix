@@ -39,6 +39,7 @@
     virt-viewer
     jetbrains-toolbox
     parsec-bin
+    vagrant
   ];
 
 
