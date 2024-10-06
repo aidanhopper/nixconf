@@ -3,11 +3,14 @@
 let
 
   nixconf = pkgs.writeShellScriptBin "nixconf" ''
-    ${pkgs.git}/bin/git -C /nixconf pull
-    ${pkgs.git}/bin/git add /nixconf
+    curdir=$(pwd)
+    cd /nixconf
+    ${pkgs.git}/bin/git pull
+    ${pkgs.git}/bin/git add .
     ${pkgs.git}/bin/git commit -m $(date "+%s")
     ${pkgs.git}/bin/git push
     sudo nixos-rebuild $1 --flake /nixconf#$2
+    cd $curdir
   '';
 
 in
