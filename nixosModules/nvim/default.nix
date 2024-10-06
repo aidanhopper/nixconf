@@ -65,6 +65,7 @@
             hls.enable = true;
             html.enable = true;
             cssls.enable = true;
+            ocamllsp.enable = true;
           };
           keymaps = {
             lspBuf = {
