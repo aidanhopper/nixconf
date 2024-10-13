@@ -41,6 +41,7 @@
     parsec-bin
     vagrant
     r2modman
+    vscode
   ];
 
 
