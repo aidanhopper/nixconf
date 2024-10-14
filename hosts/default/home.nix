@@ -42,6 +42,7 @@
     vagrant
     r2modman
     vscode
+    moonlight-qt
   ];
 
 
