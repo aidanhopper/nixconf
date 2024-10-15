@@ -39,7 +39,6 @@
     virt-viewer
     jetbrains-toolbox
     parsec-bin
-    vagrant
     r2modman
     vscode
     moonlight-qt
