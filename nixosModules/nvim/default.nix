@@ -17,7 +17,6 @@
       globals = {
         mapleader = " ";
         netrw_banner = 0;
-        netrw_browse_split = 3;
         wildmenu = true;
         wildmode = "longest:list,full";
       };
@@ -30,8 +29,7 @@
         clipboard = "unnamedplus";
         relativenumber = true;
         expandtab = true;
-        shiftwidth = 2;
-        tabstop = 2;
+        shiftwidth = 2; tabstop = 2;
         colorcolumn = "80";
         scrolloff = 8;
         signcolumn = "yes";
@@ -173,7 +171,7 @@
         }
 
         {
-          action = "<cmd>Lexplore<CR>";
+          action = "<cmd>Explore<CR>";
           key = "<leader>pv";
           options = {
             silent = true;
