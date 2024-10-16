@@ -16,6 +16,8 @@
 
       globals = {
         mapleader = " ";
+        netrw_banner = 0;
+        netrw_browse_split = 3;
         wildmenu = true;
         wildmode = "longest:list,full";
       };
