@@ -16,7 +16,6 @@
 
       globals = {
         mapleader = " ";
-        netrw_banner = false;
         wildmenu = true;
         wildmode = "longest:list,full";
       };
