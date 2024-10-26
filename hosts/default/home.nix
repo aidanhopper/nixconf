@@ -42,6 +42,7 @@
     r2modman
     vscode
     moonlight-qt
+    easyeffects
   ];
 
 
