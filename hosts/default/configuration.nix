@@ -50,7 +50,7 @@
     videoDrivers = ["nvidia"];
     desktopManager.gnome.enable = true;
     displayManager = {
-      lightdm.gdm.enable = true;
+      gdm.enable = true;
       defaultSession = "gnome";
       autoLogin = {
         enable = true;
